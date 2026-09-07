@@ -1,0 +1,218 @@
+{
+  "HomePage": {
+    "hero": {
+      "title": "Powering a Brighter Future with Solar",
+      "subtitle": "Kayvi Solar provides top-tier residential and commercial solar solutions to help you save money and protect the environment.",
+      "ctaPrimary": "Get a Free Quote",
+      "ctaSecondary": "Explore Solutions"
+    },
+    "features": {
+      "title": "Why Choose Kayvi Solar?",
+      "items": {
+        "savings": {
+          "title": "Massive Cost Savings",
+          "description": "Reduce your electricity bills significantly from day one and lock in low energy rates for decades."
+        },
+        "eco": {
+          "title": "Eco-Friendly Energy",
+          "description": "Lower your carbon footprint and contribute to a cleaner, greener, and sustainable planet."
+        },
+        "support": {
+          "title": "24/7 Monitoring",
+          "description": "We offer round-the-clock system monitoring and dedicated support to ensure peak performance."
+        }
+      }
+    },
+    "services": {
+      "title": "Our Solar Solutions",
+      "residential": {
+        "title": "Residential Solar",
+        "description": "Power your home with clean energy and increase your property value with our custom roof installations."
+      },
+      "commercial": {
+        "title": "Commercial Solar",
+        "description": "Reduce operating costs and demonstrate environmental leadership with scalable energy systems."
+      },
+      "waterHeater": {
+        "title": "Solar Water Heaters",
+        "description": "Enjoy hot water year-round while significantly reducing your energy consumption with advanced systems."
+      }
+    },
+    "stats": {
+      "experience": "Years Experience",
+      "installations": "Successful Installs",
+      "mwGenerated": "Clean Energy Generated",
+      "support": "Dedicated Support"
+    },
+    "testimonials": {
+      "title": "What Our Clients Say",
+      "items": {
+        "t1": {
+          "name": "Sarah Johnson",
+          "role": "Homeowner",
+          "quote": "Kayvi Solar transformed our energy bill. The installation was seamless and the team was incredibly professional."
+        },
+        "t2": {
+          "name": "Michael Chen",
+          "role": "Business Owner",
+          "quote": "Switching our warehouse to solar was the best financial decision we made this year. Highly recommend."
+        },
+        "t3": {
+          "name": "Emily Rodriguez",
+          "role": "Homeowner",
+          "quote": "I love the new solar water heater. It works perfectly and the savings are noticeable every single month."
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to Make the Switch?",
+      "subtitle": "Use our interactive solar calculator to estimate your savings and take the first step towards clean energy.",
+      "button": "Calculate Savings"
+    }
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "calculator": "Solar Calculator",
+    "gallery": "Gallery",
+    "contact": "Contact Us",
+    "residential": "Residential Solar",
+    "commercial": "Commercial Solar",
+    "waterHeater": "Solar Water Heater"
+  },
+  "Layout": {
+    "header": {
+      "language": "EN"
+    },
+    "footer": {
+      "tagline": "Powering a Brighter Future with Solar.",
+      "quickLinks": "Quick Links",
+      "services": "Our Services",
+      "legal": "Legal",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "newsletter": "Subscribe to our Newsletter",
+      "emailPlaceholder": "Enter your email",
+      "subscribe": "Subscribe",
+      "builtBy": "Built by Kayvi Solar."
+    }
+  },
+  "AboutPage": {
+    "hero": {
+      "title": "About Kayvi Solar",
+      "subtitle": "Leading the transition to sustainable energy since 2014."
+    },
+    "story": {
+      "title": "Our Story",
+      "content": "Kayvi Solar was founded with a simple mission: to make clean, renewable energy accessible and affordable for everyone. Over the past decade, we have grown from a small local installer into one of the most trusted solar providers in the region, helping thousands of homeowners and businesses reduce their carbon footprint and take control of their energy costs."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "content": "To accelerate the world's transition to sustainable energy by providing premium, reliable, and cost-effective solar solutions."
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "members": {
+        "m1": {
+          "name": "Rajesh Patel",
+          "role": "CEO & Founder"
+        },
+        "m2": {
+          "name": "Priya Sharma",
+          "role": "Head of Engineering"
+        },
+        "m3": {
+          "name": "Anil Kumar",
+          "role": "Operations Manager"
+        }
+      }
+    }
+  },
+  "ServicesPage": {
+    "hero": {
+      "title": "Our Services",
+      "subtitle": "Comprehensive solar solutions tailored to your energy needs."
+    },
+    "cta": "Learn More"
+  },
+  "ContactPage": {
+    "hero": {
+      "title": "Contact Us",
+      "subtitle": "Get in touch for a free consultation or any inquiries."
+    },
+    "form": {
+      "title": "Send us a message",
+      "name": "Full Name",
+      "namePlaceholder": "John Doe",
+      "email": "Email Address",
+      "emailPlaceholder": "john@example.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+1 (555) 000-0000",
+      "projectType": "Project Type",
+      "projectPlaceholder": "Select a project type",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your energy needs...",
+      "submit": "Send Message",
+      "success": "Message sent successfully!"
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": "123 Solar Way, Tech Park, City, Country",
+      "phone": "+1 (555) 123-4567",
+      "email": "info@kayvisolar.com"
+    }
+  },
+  "CalculatorPage": {
+    "hero": {
+      "title": "Solar Savings Calculator",
+      "subtitle": "Estimate your potential savings and system size in seconds."
+    },
+    "form": {
+      "billLabel": "Average Monthly Electric Bill",
+      "exposureLabel": "Roof Sun Exposure",
+      "exposure": {
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low"
+      },
+      "roofTypeLabel": "Roof Type",
+      "roofType": {
+        "flat": "Flat",
+        "sloped": "Sloped"
+      }
+    },
+    "results": {
+      "title": "Your Estimated Savings",
+      "systemSize": "Recommended System Size",
+      "monthlySavings": "Est. Monthly Savings",
+      "twentyYearSavings": "20-Year Savings",
+      "payback": "Est. Payback Period",
+      "years": "years",
+      "chartTitle": "Estimated Cost Over 20 Years",
+      "chartWithout": "Without Solar",
+      "chartWith": "With Solar",
+      "cta": "Get Formal Quote"
+    }
+  },
+  "BlogPage": {
+    "title": "Our Blog",
+    "subtitle": "Read the latest updates and insights from Kayvi Solar."
+  },
+  "FaqPage": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about switching to solar energy."
+  },
+  "GalleryPage": {
+    "title": "Our Gallery",
+    "subtitle": "Explore our portfolio of successful solar installations."
+  },
+  "CareersPage": {
+    "title": "Join Our Mission",
+    "subtitle": "Help us accelerate the world's transition to sustainable energy."
+  },
+  "CertificatesPage": {
+    "title": "Our Certifications",
+    "subtitle": "Recognized for excellence and compliance in solar energy."
+  }
+}

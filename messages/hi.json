@@ -1,0 +1,218 @@
+{
+  "HomePage": {
+    "hero": {
+      "title": "",
+      "subtitle": "",
+      "ctaPrimary": "",
+      "ctaSecondary": ""
+    },
+    "features": {
+      "title": "",
+      "items": {
+        "savings": {
+          "title": "",
+          "description": ""
+        },
+        "eco": {
+          "title": "",
+          "description": ""
+        },
+        "support": {
+          "title": "",
+          "description": ""
+        }
+      }
+    },
+    "services": {
+      "title": "",
+      "residential": {
+        "title": "",
+        "description": ""
+      },
+      "commercial": {
+        "title": "",
+        "description": ""
+      },
+      "waterHeater": {
+        "title": "",
+        "description": ""
+      }
+    },
+    "stats": {
+      "experience": "",
+      "installations": "",
+      "mwGenerated": "",
+      "support": ""
+    },
+    "testimonials": {
+      "title": "",
+      "items": {
+        "t1": {
+          "name": "",
+          "role": "",
+          "quote": ""
+        },
+        "t2": {
+          "name": "",
+          "role": "",
+          "quote": ""
+        },
+        "t3": {
+          "name": "",
+          "role": "",
+          "quote": ""
+        }
+      }
+    },
+    "cta": {
+      "title": "",
+      "subtitle": "",
+      "button": ""
+    }
+  },
+  "Navigation": {
+    "home": "",
+    "about": "",
+    "services": "",
+    "calculator": "",
+    "gallery": "",
+    "contact": "",
+    "residential": "",
+    "commercial": "",
+    "waterHeater": ""
+  },
+  "Layout": {
+    "header": {
+      "language": ""
+    },
+    "footer": {
+      "tagline": "",
+      "quickLinks": "",
+      "services": "",
+      "legal": "",
+      "privacy": "",
+      "terms": "",
+      "newsletter": "",
+      "emailPlaceholder": "",
+      "subscribe": "",
+      "builtBy": ""
+    }
+  },
+  "AboutPage": {
+    "hero": {
+      "title": "",
+      "subtitle": ""
+    },
+    "story": {
+      "title": "",
+      "content": ""
+    },
+    "mission": {
+      "title": "",
+      "content": ""
+    },
+    "team": {
+      "title": "",
+      "members": {
+        "m1": {
+          "name": "",
+          "role": ""
+        },
+        "m2": {
+          "name": "",
+          "role": ""
+        },
+        "m3": {
+          "name": "",
+          "role": ""
+        }
+      }
+    }
+  },
+  "ServicesPage": {
+    "hero": {
+      "title": "",
+      "subtitle": ""
+    },
+    "cta": ""
+  },
+  "ContactPage": {
+    "hero": {
+      "title": "",
+      "subtitle": ""
+    },
+    "form": {
+      "title": "",
+      "name": "",
+      "namePlaceholder": "",
+      "email": "",
+      "emailPlaceholder": "",
+      "phone": "",
+      "phonePlaceholder": "",
+      "projectType": "",
+      "projectPlaceholder": "",
+      "message": "",
+      "messagePlaceholder": "",
+      "submit": "",
+      "success": ""
+    },
+    "info": {
+      "title": "",
+      "address": "",
+      "phone": "",
+      "email": ""
+    }
+  },
+  "CalculatorPage": {
+    "hero": {
+      "title": "",
+      "subtitle": ""
+    },
+    "form": {
+      "billLabel": "",
+      "exposureLabel": "",
+      "exposure": {
+        "high": "",
+        "medium": "",
+        "low": ""
+      },
+      "roofTypeLabel": "",
+      "roofType": {
+        "flat": "",
+        "sloped": ""
+      }
+    },
+    "results": {
+      "title": "",
+      "systemSize": "",
+      "monthlySavings": "",
+      "twentyYearSavings": "",
+      "payback": "",
+      "years": "",
+      "chartTitle": "",
+      "chartWithout": "",
+      "chartWith": "",
+      "cta": ""
+    }
+  },
+  "BlogPage": {
+    "title": "",
+    "subtitle": ""
+  },
+  "FaqPage": {
+    "title": "",
+    "subtitle": ""
+  },
+  "GalleryPage": {
+    "title": "",
+    "subtitle": ""
+  },
+  "CareersPage": {
+    "title": "",
+    "subtitle": ""
+  },
+  "CertificatesPage": {
+    "title": "",
+    "subtitle": ""
+  }
+}

@@ -124,7 +124,7 @@ export default function CalculatorClient({ locale }: { locale: string }) {
 
             <div className="space-y-4">
               <Label className="text-base font-semibold">{t('form.roofTypeLabel')}</Label>
-              <Select value={roofType} onValueChange={setRoofType}>
+              <Select value={roofType} onValueChange={(val) => val && setRoofType(val)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select roof type" />
                 </SelectTrigger>
@@ -186,7 +186,7 @@ export default function CalculatorClient({ locale }: { locale: string }) {
                     <XAxis dataKey="year" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#71717a' }} dy={10} />
                     <YAxis axisLine={false} tickLine={false} tickFormatter={(value) => `₹${(value/100000).toFixed(1)}L`} tick={{ fontSize: 12, fill: '#71717a' }} />
                     <Tooltip 
-                      formatter={(value: number) => [`₹${value.toLocaleString('en-IN')}`, '']}
+                      formatter={(value: any) => [`₹${Number(value).toLocaleString('en-IN')}`, '']}
                       contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
                     />
                     <Legend verticalAlign="top" height={36} />

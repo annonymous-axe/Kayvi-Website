@@ -67,9 +67,8 @@ export const GET_CAREERS = `
     careerListings {
       documentId
       title
-      department
       location
-      type
+      employmentType
       description
     }
   }
@@ -79,9 +78,9 @@ export const GET_CERTIFICATES = `
   query GetCertificates {
     certificates {
       documentId
-      name
-      issuer
-      date
+      title
+      issuedBy
+      issuedDate
       image {
         url
       }

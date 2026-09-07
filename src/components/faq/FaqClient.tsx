@@ -46,7 +46,7 @@ export default function FaqClient({ faqs = [] }: { faqs: FAQ[] }) {
           {faqs.length === 0 ? (
             <p className="text-center text-muted-foreground py-10">No FAQs available at the moment.</p>
           ) : (
-            <Accordion type="single" collapsible className="w-full space-y-4">
+            <Accordion className="w-full space-y-4">
               {faqs.map((faq, index) => (
                 <AccordionItem 
                   key={faq.documentId} 

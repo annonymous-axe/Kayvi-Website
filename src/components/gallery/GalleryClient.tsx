@@ -58,6 +58,7 @@ export default function GalleryClient({ projects = [] }: { projects: Project[] }
                     src={item.coverImage!.url.startsWith('http') ? item.coverImage!.url : `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${item.coverImage!.url}`} 
                     alt={item.title} 
                     fill 
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-700" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">

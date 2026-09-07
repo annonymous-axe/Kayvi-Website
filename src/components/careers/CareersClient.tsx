@@ -10,9 +10,8 @@ import remarkGfm from 'remark-gfm';
 interface Career {
   documentId: string;
   title: string;
-  department: string;
   location: string;
-  type: string;
+  employmentType: string;
   description: string;
 }
 
@@ -57,8 +56,8 @@ export default function CareersClient({ careers = [] }: { careers: Career[] }) {
               >
                 <div className="flex-grow space-y-4">
                   <div className="flex items-center gap-3">
-                    <span className="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 font-semibold px-3 py-1 rounded-full text-sm">
-                      {career.department}
+                    <span className="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 font-semibold px-3 py-1 rounded-full text-sm capitalize">
+                      {career.employmentType.replace('-', ' ')}
                     </span>
                   </div>
                   
@@ -68,8 +67,8 @@ export default function CareersClient({ careers = [] }: { careers: Career[] }) {
                     <div className="flex items-center gap-1.5">
                       <MapPin className="w-4 h-4" /> {career.location}
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      <Clock className="w-4 h-4" /> {career.type}
+                    <div className="flex items-center gap-1.5 capitalize">
+                      <Clock className="w-4 h-4" /> {career.employmentType.replace('-', ' ')}
                     </div>
                     <div className="flex items-center gap-1.5">
                       <Briefcase className="w-4 h-4" /> Kayvi Solar

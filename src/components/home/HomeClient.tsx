@@ -109,7 +109,7 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div className="group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer" {...fadeIn} transition={{ delay: 0.1 }}>
               <div className="relative h-64 overflow-hidden">
-                <Image src={SITE_IMAGES.services.residential} alt="Residential Solar" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src={SITE_IMAGES.services.residential} alt="Residential Solar" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                 <h3 className="absolute bottom-6 left-6 text-2xl font-bold text-white">{t('services.residential.title')}</h3>
               </div>
@@ -120,7 +120,7 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
 
             <motion.div className="group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer" {...fadeIn} transition={{ delay: 0.2 }}>
               <div className="relative h-64 overflow-hidden">
-                <Image src={SITE_IMAGES.services.commercial} alt="Commercial Solar" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src={SITE_IMAGES.services.commercial} alt="Commercial Solar" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                 <h3 className="absolute bottom-6 left-6 text-2xl font-bold text-white">{t('services.commercial.title')}</h3>
               </div>
@@ -131,7 +131,7 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
 
             <motion.div className="group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer" {...fadeIn} transition={{ delay: 0.3 }}>
               <div className="relative h-64 overflow-hidden">
-                <Image src={SITE_IMAGES.services.waterHeater} alt="Solar Water Heater" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src={SITE_IMAGES.services.waterHeater} alt="Solar Water Heaters" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                 <h3 className="absolute bottom-6 left-6 text-2xl font-bold text-white">{t('services.waterHeater.title')}</h3>
               </div>

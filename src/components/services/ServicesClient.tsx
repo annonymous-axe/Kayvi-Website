@@ -113,6 +113,7 @@ export default function ServicesClient({ projects = [] }: { projects?: Project[]
                         src={project.coverImage.url.startsWith('http') ? project.coverImage.url : `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${project.coverImage.url}`} 
                         alt={project.title} 
                         fill 
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover group-hover:scale-110 transition-transform duration-700" 
                       />
                     ) : (

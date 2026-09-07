@@ -7,9 +7,9 @@ import { Award, CheckCircle2 } from 'lucide-react';
 
 interface Certificate {
   documentId: string;
-  name: string;
-  issuer: string;
-  date: string;
+  title: string;
+  issuedBy: string;
+  issuedDate: string;
   image?: {
     url: string;
   };
@@ -50,7 +50,7 @@ export default function CertificatesClient({ certificates = [] }: { certificates
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {certificates.map((cert, index) => {
-              const formattedDate = cert.date ? new Date(cert.date).toLocaleDateString(undefined, {
+              const formattedDate = cert.issuedDate ? new Date(cert.issuedDate).toLocaleDateString(undefined, {
                 year: 'numeric',
                 month: 'long'
               }) : null;
@@ -68,7 +68,7 @@ export default function CertificatesClient({ certificates = [] }: { certificates
                       {cert.image ? (
                         <Image 
                           src={cert.image.url.startsWith('http') ? cert.image.url : `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${cert.image.url}`} 
-                          alt={cert.name} 
+                          alt={cert.title} 
                           fill 
                           className="object-contain p-4" 
                         />
@@ -81,8 +81,8 @@ export default function CertificatesClient({ certificates = [] }: { certificates
                     <div className="inline-flex items-center gap-2 text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 px-3 py-1 rounded-full text-sm font-medium">
                       <CheckCircle2 className="w-4 h-4" /> Verified
                     </div>
-                    <h3 className="text-2xl font-bold">{cert.name}</h3>
-                    <p className="text-lg text-muted-foreground font-medium">{cert.issuer}</p>
+                    <h3 className="text-2xl font-bold">{cert.title}</h3>
+                    <p className="text-lg text-muted-foreground font-medium">{cert.issuedBy}</p>
                     {formattedDate && (
                       <p className="text-sm text-muted-foreground">Issued: {formattedDate}</p>
                     )}

@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import GalleryClient from '@/components/gallery/GalleryClient';
-import { staticProjects } from '@/lib/staticData';
+import { getStaticProjects } from '@/lib/staticData';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const resolvedParams = await params;
@@ -11,7 +11,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function GalleryPage() {
-  return <GalleryClient projects={staticProjects} />;
+export default async function GalleryPage({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = await params;
+  return <GalleryClient projects={getStaticProjects(resolvedParams.locale)} />;
 }
 

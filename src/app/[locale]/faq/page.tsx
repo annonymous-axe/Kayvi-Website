@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import FaqClient from '@/components/faq/FaqClient';
-import { staticFaqs } from '@/lib/staticData';
+import { getStaticFaqs } from '@/lib/staticData';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const resolvedParams = await params;
@@ -11,7 +11,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function FaqPage() {
-  return <FaqClient faqs={staticFaqs} />;
+export default async function FaqPage({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = await params;
+  return <FaqClient faqs={getStaticFaqs(resolvedParams.locale)} />;
 }
 

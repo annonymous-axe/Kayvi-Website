@@ -23,6 +23,18 @@ export default function Header({ locale }: { locale: string }) {
     { href: `/${locale}/contact`, label: t('contact') },
   ];
 
+  const getLocalizedPath = (targetLocale: string) => {
+    if (!pathname) return `/${targetLocale}`;
+    const cleanPath = pathname.replace(/\/$/, '');
+    if (cleanPath === '' || cleanPath === `/${locale}`) {
+      return `/${targetLocale}`;
+    }
+    if (cleanPath.startsWith(`/${locale}/`)) {
+      return cleanPath.replace(`/${locale}/`, `/${targetLocale}/`);
+    }
+    return `/${targetLocale}${cleanPath.startsWith('/') ? cleanPath : '/' + cleanPath}`;
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm">
       <div className="container mx-auto px-4 flex h-16 items-center justify-between">
@@ -48,21 +60,27 @@ export default function Header({ locale }: { locale: string }) {
         </div>
         
         <div className="flex items-center space-x-4">
-          <div className="hidden sm:flex items-center space-x-1 text-xs font-semibold">
-            {(['en', 'hi', 'gu'] as const).map((l) => {
-              const targetPath = pathname ? pathname.replace(/^\/(en|hi|gu)/, `/${l}`) : `/${l}`;
-              const isActive = locale === l;
+          {/* Desktop Language Switcher */}
+          <div className="flex items-center space-x-1 text-xs font-semibold bg-gray-100 dark:bg-zinc-800/80 p-1 rounded-lg border border-gray-200/50 dark:border-zinc-700/50">
+            {[
+              { code: 'en', label: 'EN', title: 'English' },
+              { code: 'hi', label: 'हिं', title: 'हिंदी' },
+              { code: 'gu', label: 'ગુજ', title: 'ગુજરાતી' },
+            ].map((lang) => {
+              const targetPath = getLocalizedPath(lang.code);
+              const isActive = locale === lang.code;
               return (
                 <Link
-                  key={l}
+                  key={lang.code}
                   href={targetPath}
-                  className={`px-2 py-1 rounded transition-colors ${
+                  title={lang.title}
+                  className={`px-2.5 py-1 rounded-md transition-all ${
                     isActive
-                      ? 'bg-emerald-100 text-emerald-800 font-bold dark:bg-emerald-950/80 dark:text-emerald-300'
-                      : 'text-muted-foreground hover:text-emerald-600 hover:bg-gray-100 dark:hover:bg-zinc-800'
+                      ? 'bg-white dark:bg-zinc-900 text-emerald-700 dark:text-emerald-400 font-bold shadow-sm'
+                      : 'text-muted-foreground hover:text-emerald-600'
                   }`}
                 >
-                  {l.toUpperCase()}
+                  {lang.label}
                 </Link>
               );
             })}
@@ -93,10 +111,33 @@ export default function Header({ locale }: { locale: string }) {
                     {link.label}
                   </Link>
                 ))}
-                <div className="flex gap-4 mt-4 border-t pt-4">
-                  <span className="text-sm font-bold text-emerald-600">EN</span>
-                  <span className="text-sm text-muted-foreground line-through">HI</span>
-                  <span className="text-sm text-muted-foreground line-through">GU</span>
+                
+                {/* Mobile Language Switcher */}
+                <div className="flex flex-col gap-3 mt-4 border-t pt-4">
+                  <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Language / भाषा / ભાષા</span>
+                  <div className="flex gap-2">
+                    {[
+                      { code: 'en', label: 'English' },
+                      { code: 'hi', label: 'हिंदी' },
+                      { code: 'gu', label: 'ગુજરાતી' },
+                    ].map((lang) => {
+                      const targetPath = getLocalizedPath(lang.code);
+                      const isActive = locale === lang.code;
+                      return (
+                        <Link
+                          key={lang.code}
+                          href={targetPath}
+                          className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-colors ${
+                            isActive
+                              ? 'bg-emerald-600 text-white shadow-sm font-bold'
+                              : 'bg-zinc-100 dark:bg-zinc-800 text-foreground hover:bg-emerald-50 hover:text-emerald-600'
+                          }`}
+                        >
+                          {lang.label}
+                        </Link>
+                      );
+                    })}
+                  </div>
                 </div>
               </nav>
             </SheetContent>

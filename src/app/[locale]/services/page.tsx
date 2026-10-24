@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import ServicesClient from '@/components/services/ServicesClient';
-import { staticProjects } from '@/lib/staticData';
+import { getStaticProjects } from '@/lib/staticData';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const resolvedParams = await params;
@@ -11,7 +11,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function ServicesPage() {
-  return <ServicesClient projects={staticProjects} />;
+export default async function ServicesPage({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = await params;
+  return <ServicesClient projects={getStaticProjects(resolvedParams.locale)} />;
 }
 

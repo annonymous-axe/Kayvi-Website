@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -21,6 +21,8 @@ const formSchema = z.object({
 
 export default function ContactClient() {
   const t = useTranslations('ContactPage');
+  const navT = useTranslations('Navigation');
+  const locale = useLocale();
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const {
@@ -52,6 +54,10 @@ export default function ContactClient() {
     transition: { duration: 0.6 }
   };
 
+  const addressLabel = locale === 'hi' ? 'पता' : locale === 'gu' ? 'સરનામું' : 'Address';
+  const phoneLabel = locale === 'hi' ? 'फ़ोन नंबर' : locale === 'gu' ? 'ફોન નંબર' : 'Phone';
+  const emailLabel = locale === 'hi' ? 'ईमेल' : locale === 'gu' ? 'ઈમેલ' : 'Email';
+
   return (
     <div className="flex flex-col min-h-screen pt-16">
       {/* Hero */}
@@ -75,7 +81,7 @@ export default function ContactClient() {
                     <MapPin className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-lg">Address</h4>
+                    <h4 className="font-semibold text-lg">{addressLabel}</h4>
                     <p className="text-muted-foreground leading-relaxed">{t('info.address')}</p>
                   </div>
                 </div>
@@ -84,7 +90,7 @@ export default function ContactClient() {
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-lg">Phone</h4>
+                    <h4 className="font-semibold text-lg">{phoneLabel}</h4>
                     <a href={`tel:${t('info.phone').replace(/\s+/g, '')}`} className="text-muted-foreground hover:text-emerald-600 transition-colors">
                       {t('info.phone')}
                     </a>
@@ -95,7 +101,7 @@ export default function ContactClient() {
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-lg">Email</h4>
+                    <h4 className="font-semibold text-lg">{emailLabel}</h4>
                     <a href={`mailto:${t('info.email')}`} className="text-muted-foreground hover:text-emerald-600 transition-colors">
                       {t('info.email')}
                     </a>
@@ -167,9 +173,9 @@ export default function ContactClient() {
                     {...register('projectType')}
                   >
                     <option value="">{t('form.projectPlaceholder')}</option>
-                    <option value="residential">Residential Solar</option>
-                    <option value="commercial">Commercial Solar</option>
-                    <option value="waterHeater">Solar Water Heater</option>
+                    <option value="residential">{navT('residential')}</option>
+                    <option value="commercial">{navT('commercial')}</option>
+                    <option value="waterHeater">{navT('waterHeater')}</option>
                   </select>
                   {errors.projectType && <p className="text-sm text-red-500">{errors.projectType.message as string}</p>}
                 </div>

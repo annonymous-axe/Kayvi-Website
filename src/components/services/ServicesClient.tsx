@@ -19,6 +19,7 @@ interface Project {
 
 export default function ServicesClient({ projects = [] }: { projects?: Project[] }) {
   const t = useTranslations('ServicesPage');
+  const homeT = useTranslations('HomePage.services');
   const locale = useLocale();
 
   const fadeIn = {
@@ -31,22 +32,22 @@ export default function ServicesClient({ projects = [] }: { projects?: Project[]
   const services = [
     {
       id: 'residential',
-      title: 'Residential Solar',
-      desc: 'Power your home with clean energy and increase your property value with our custom roof installations.',
+      title: homeT('residential.title'),
+      desc: homeT('residential.description'),
       image: SITE_IMAGES.services.residential,
       href: `/${locale}/services/residential-solar`
     },
     {
       id: 'commercial',
-      title: 'Commercial Solar',
-      desc: 'Reduce operating costs and demonstrate environmental leadership with scalable energy systems.',
+      title: homeT('commercial.title'),
+      desc: homeT('commercial.description'),
       image: SITE_IMAGES.services.commercial,
       href: `/${locale}/services/commercial-solar`
     },
     {
       id: 'waterHeater',
-      title: 'Solar Water Heaters',
-      desc: 'Enjoy hot water year-round while significantly reducing your energy consumption with advanced systems.',
+      title: homeT('waterHeater.title'),
+      desc: homeT('waterHeater.description'),
       image: SITE_IMAGES.services.waterHeater,
       href: `/${locale}/services/solar-water-heater`
     }
@@ -101,7 +102,7 @@ export default function ServicesClient({ projects = [] }: { projects?: Project[]
         <section className="py-24 px-4 bg-gray-50 dark:bg-zinc-900">
           <div className="container mx-auto">
             <motion.div className="text-center mb-16" {...fadeIn}>
-              <h2 className="text-3xl md:text-4xl font-bold">Featured Projects</h2>
+              <h2 className="text-3xl md:text-4xl font-bold">{locale === 'hi' ? 'प्रमुख प्रोजेक्ट्स' : locale === 'gu' ? 'મુખ્ય પ્રોજેક્ટ્સ' : 'Featured Projects'}</h2>
               <div className="w-24 h-1 bg-emerald-500 mx-auto mt-6 rounded-full" />
             </motion.div>
 
@@ -111,7 +112,7 @@ export default function ServicesClient({ projects = [] }: { projects?: Project[]
                   <div className="relative h-60 overflow-hidden bg-gray-100 dark:bg-zinc-800">
                     <div className="absolute top-4 right-4 z-10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider rounded-full bg-amber-500 text-white shadow-md flex items-center gap-1.5 backdrop-blur-sm">
                       <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                      {project.status || 'Upcoming'}
+                      {project.status || (locale === 'hi' ? 'आगामी' : locale === 'gu' ? 'આગામી' : 'Upcoming')}
                     </div>
                     {project.coverImage ? (
                       <Image 

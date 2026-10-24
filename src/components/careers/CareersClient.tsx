@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { MapPin, Briefcase, Clock, ArrowRight } from 'lucide-react';
@@ -17,6 +17,7 @@ interface Career {
 
 export default function CareersClient({ careers = [] }: { careers: Career[] }) {
   const t = useTranslations('CareersPage');
+  const locale = useLocale();
 
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -86,7 +87,7 @@ export default function CareersClient({ careers = [] }: { careers: Career[] }) {
                 
                 <div className="shrink-0 w-full md:w-auto mt-4 md:mt-0">
                   <Button size="lg" className="w-full md:w-auto bg-emerald-600 hover:bg-emerald-700 text-white rounded-full group">
-                    Apply Now
+                    {locale === 'hi' ? 'आवेदन करें' : locale === 'gu' ? 'અરજી કરો' : 'Apply Now'}
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </div>

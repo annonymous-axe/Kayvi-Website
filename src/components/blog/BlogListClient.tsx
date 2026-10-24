@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -18,6 +18,7 @@ interface BlogPost {
 
 export default function BlogListClient({ posts = [] }: { posts: BlogPost[] }) {
   const locale = useLocale();
+  const t = useTranslations('BlogPage');
 
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -30,9 +31,9 @@ export default function BlogListClient({ posts = [] }: { posts: BlogPost[] }) {
     <div className="flex flex-col min-h-screen pt-24 pb-16 bg-gray-50 dark:bg-zinc-900">
       <div className="container mx-auto px-4">
         <motion.div className="text-center mb-16" {...fadeIn}>
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Our Blog</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4">{t('title')}</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Insights, news, and guides on transitioning to a sustainable solar future.
+            {t('subtitle')}
           </p>
           <div className="w-24 h-1 bg-emerald-500 mx-auto mt-6 rounded-full" />
         </motion.div>
@@ -78,7 +79,7 @@ export default function BlogListClient({ posts = [] }: { posts: BlogPost[] }) {
                       <h3 className="text-2xl font-bold mb-3 group-hover:text-emerald-600 transition-colors line-clamp-2">{post.title}</h3>
                       <p className="text-muted-foreground flex-grow line-clamp-3">{post.excerpt}</p>
                       <div className="mt-6 font-semibold text-emerald-600 group-hover:text-emerald-700 flex items-center gap-2">
-                        Read More <span className="text-xl">&rarr;</span>
+                        {locale === 'hi' ? 'और पढ़ें' : locale === 'gu' ? 'વધુ વાંચો' : 'Read More'} <span className="text-xl">&rarr;</span>
                       </div>
                     </div>
                   </Link>

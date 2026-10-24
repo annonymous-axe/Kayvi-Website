@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
@@ -16,6 +16,7 @@ interface Project {
 
 export default function GalleryClient({ projects = [] }: { projects: Project[] }) {
   const t = useTranslations('GalleryPage');
+  const locale = useLocale();
 
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -57,7 +58,7 @@ export default function GalleryClient({ projects = [] }: { projects: Project[] }
                 <div className="relative w-full overflow-hidden" style={{ aspectRatio: i % 3 === 0 ? '4/5' : i % 2 === 0 ? '1/1' : '3/4' }}>
                   <div className="absolute top-3 right-3 z-10 px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full bg-amber-500/90 text-white shadow-md flex items-center gap-1.5 backdrop-blur-sm">
                     <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                    {item.status || 'Upcoming'}
+                    {item.status || (locale === 'hi' ? 'आगामी' : locale === 'gu' ? 'આગામી' : 'Upcoming')}
                   </div>
                   <Image 
                     src={item.coverImage!.url.startsWith('http') ? item.coverImage!.url : `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${item.coverImage!.url}`} 

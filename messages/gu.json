@@ -112,55 +112,55 @@
       "content": ""
     },
     "team": {
-      "title": "",
+      "title": "અમારી ટીમને મળો",
       "members": {
         "m1": {
-          "name": "",
-          "role": ""
+          "name": "વિજય પાટિલ",
+          "role": "સીઈઓ અને સ્થાપક"
         },
         "m2": {
-          "name": "",
-          "role": ""
+          "name": "દીપક પાટિલ",
+          "role": "હેડ ઓફ એન્જિનિયરિંગ"
         },
         "m3": {
-          "name": "",
-          "role": ""
+          "name": "કમલેશ બાવિસ્કર",
+          "role": "ઓપરેશન એન્જિનિયરિંગ"
         }
       }
     }
   },
   "ServicesPage": {
     "hero": {
-      "title": "",
-      "subtitle": ""
+      "title": "અમારી સેવાઓ",
+      "subtitle": "તમારી ઊર્જા જરૂરિયાતો માટે તૈયાર કરેલા સંપૂર્ણ સોલાર સોલ્યુશન્સ."
     },
-    "cta": ""
+    "cta": "વધુ જાણો"
   },
   "ContactPage": {
     "hero": {
-      "title": "",
-      "subtitle": ""
+      "title": "સંપર્ક કરો",
+      "subtitle": "મફત સલાહ અથવા કોઈપણ પૂછપરછ માટે સંપર્ક કરો."
     },
     "form": {
-      "title": "",
-      "name": "",
-      "namePlaceholder": "",
-      "email": "",
-      "emailPlaceholder": "",
-      "phone": "",
-      "phonePlaceholder": "",
-      "projectType": "",
-      "projectPlaceholder": "",
-      "message": "",
-      "messagePlaceholder": "",
-      "submit": "",
-      "success": ""
+      "title": "અમને સંદેશ મોકલો",
+      "name": "પૂરું નામ",
+      "namePlaceholder": "દા.ત. રમેશ પટેલ",
+      "email": "ઈમેઈલ સરનામું",
+      "emailPlaceholder": "yourname@example.com",
+      "phone": "ફોન નંબર",
+      "phonePlaceholder": "+91 82004 98266",
+      "projectType": "પ્રોજેક્ટ પ્રકાર",
+      "projectPlaceholder": "પ્રોજેક્ટ પ્રકાર પસંદ કરો",
+      "message": "સંદેશ",
+      "messagePlaceholder": "તમારી જરૂરિયાતો વિશે જણાવો...",
+      "submit": "સંદેશ મોકલો",
+      "success": "સંદેશ સફળતાપૂર્વક મોકલવામાં આવ્યો!"
     },
     "info": {
-      "title": "",
-      "address": "",
-      "phone": "",
-      "email": ""
+      "title": "સંપર્ક માહિતી",
+      "address": "દુકાન નં. 12, આર. ડી. કોમ્પ્લેક્સ, નવાગામ, ડીંડોલી રોડ, ઉધના, સુરત, ગુજરાત 394210",
+      "phone": "+91 8200498266",
+      "email": "kayvisolar@gmail.com"
     }
   },
   "CalculatorPage": {

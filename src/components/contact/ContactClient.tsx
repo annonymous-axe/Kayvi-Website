@@ -71,37 +71,50 @@ export default function ContactClient() {
               <h2 className="text-3xl font-bold mb-8 text-emerald-600">{t('info.title')}</h2>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="bg-emerald-100 p-3 rounded-full text-emerald-600">
+                  <div className="bg-emerald-100 dark:bg-emerald-950/50 p-3 rounded-full text-emerald-600 shrink-0">
                     <MapPin className="w-6 h-6" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Address</h4>
-                    <p className="text-muted-foreground">{t('info.address')}</p>
+                    <p className="text-muted-foreground leading-relaxed">{t('info.address')}</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <div className="bg-emerald-100 p-3 rounded-full text-emerald-600">
+                  <div className="bg-emerald-100 dark:bg-emerald-950/50 p-3 rounded-full text-emerald-600 shrink-0">
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Phone</h4>
-                    <p className="text-muted-foreground">{t('info.phone')}</p>
+                    <a href={`tel:${t('info.phone').replace(/\s+/g, '')}`} className="text-muted-foreground hover:text-emerald-600 transition-colors">
+                      {t('info.phone')}
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <div className="bg-emerald-100 p-3 rounded-full text-emerald-600">
+                  <div className="bg-emerald-100 dark:bg-emerald-950/50 p-3 rounded-full text-emerald-600 shrink-0">
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Email</h4>
-                    <p className="text-muted-foreground">{t('info.email')}</p>
+                    <a href={`mailto:${t('info.email')}`} className="text-muted-foreground hover:text-emerald-600 transition-colors">
+                      {t('info.email')}
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
             
-            <div className="w-full h-[300px] bg-gray-200 dark:bg-zinc-800 rounded-2xl flex items-center justify-center">
-              <span className="text-muted-foreground font-medium">Google Maps Embed Placeholder</span>
+            <div className="w-full h-[320px] rounded-2xl overflow-hidden shadow-md border border-gray-200 dark:border-zinc-800">
+              <iframe 
+                title="Kayvi Solar Location Map"
+                src="https://maps.google.com/maps?q=Shop+No.+12,+R.+D.+Complex,+Navagam,+Dindoli+Rd,+Udhana,+Surat,+Gujarat+394210&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={false} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </motion.div>
 

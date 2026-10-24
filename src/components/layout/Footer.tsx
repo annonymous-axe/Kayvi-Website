@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { siteConfig } from '@/config/site';
-import { Mail } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 
 export default function Footer({ locale }: { locale: string }) {
   const t = useTranslations('Layout.footer');
@@ -22,9 +22,27 @@ export default function Footer({ locale }: { locale: string }) {
                 {siteConfig.businessName}
               </span>
             </Link>
-            <p className="text-zinc-400">
+            <p className="text-zinc-400 text-sm">
               {t('tagline')}
             </p>
+            <div className="space-y-2 text-xs text-zinc-400 pt-2">
+              <div className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                <span className="leading-relaxed">{siteConfig.address}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-emerald-500 shrink-0" />
+                <a href={`tel:${siteConfig.phone.replace(/\s+/g, '')}`} className="hover:text-emerald-400 transition-colors">
+                  {siteConfig.phone}
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-emerald-500 shrink-0" />
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-emerald-400 transition-colors">
+                  {siteConfig.email}
+                </a>
+              </div>
+            </div>
             <div className="flex space-x-4 pt-2 text-sm">
               <a href="#" className="hover:text-emerald-500 transition-colors">Facebook</a>
               <a href="#" className="hover:text-emerald-500 transition-colors">Twitter</a>

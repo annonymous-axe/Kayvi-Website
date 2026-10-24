@@ -1,7 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import FaqClient from '@/components/faq/FaqClient';
-import { fetchGraphQL } from '@/lib/graphql';
-import { GET_FAQS } from '@/lib/queries';
+import { staticFaqs } from '@/lib/staticData';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const resolvedParams = await params;
@@ -13,13 +12,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default async function FaqPage() {
-  let faqs = [];
-  try {
-    const data = await fetchGraphQL<{ faqs: any[] }>(GET_FAQS);
-    faqs = data?.faqs || [];
-  } catch (error) {
-    console.error("Failed to fetch FAQs from CMS");
-  }
-
-  return <FaqClient faqs={faqs} />;
+  return <FaqClient faqs={staticFaqs} />;
 }
+

@@ -115,16 +115,16 @@
       "title": "Meet Our Team",
       "members": {
         "m1": {
-          "name": "Rajesh Patel",
+          "name": "Vijay Patil",
           "role": "CEO & Founder"
         },
         "m2": {
-          "name": "Priya Sharma",
+          "name": "Dipak Patil",
           "role": "Head of Engineering"
         },
         "m3": {
-          "name": "Anil Kumar",
-          "role": "Operations Manager"
+          "name": "Kamlesh Baviskar",
+          "role": "Operation Engineering"
         }
       }
     }
@@ -144,23 +144,23 @@
     "form": {
       "title": "Send us a message",
       "name": "Full Name",
-      "namePlaceholder": "John Doe",
+      "namePlaceholder": "e.g. Ramesh Patel",
       "email": "Email Address",
-      "emailPlaceholder": "john@example.com",
+      "emailPlaceholder": "yourname@example.com",
       "phone": "Phone Number",
-      "phonePlaceholder": "+1 (555) 000-0000",
+      "phonePlaceholder": "+91 82004 98266",
       "projectType": "Project Type",
       "projectPlaceholder": "Select a project type",
       "message": "Message",
-      "messagePlaceholder": "Tell us about your energy needs...",
+      "messagePlaceholder": "Tell us about your rooftop area, monthly electricity bill, or project needs...",
       "submit": "Send Message",
       "success": "Message sent successfully!"
     },
     "info": {
       "title": "Contact Information",
-      "address": "123 Solar Way, Tech Park, City, Country",
-      "phone": "+1 (555) 123-4567",
-      "email": "info@kayvisolar.com"
+      "address": "Shop No. 12, R. D. Complex, Navagam, Dindoli Rd, Udhana, Surat, Gujarat 394210",
+      "phone": "+91 8200498266",
+      "email": "kayvisolar@gmail.com"
     }
   },
   "CalculatorPage": {

@@ -48,10 +48,24 @@ export default function Header({ locale }: { locale: string }) {
         </div>
         
         <div className="flex items-center space-x-4">
-          <div className="hidden sm:flex items-center space-x-2">
-            <span className="text-sm font-bold text-emerald-600">EN</span>
-            <span className="text-sm text-muted-foreground line-through" title="Coming soon">HI</span>
-            <span className="text-sm text-muted-foreground line-through" title="Coming soon">GU</span>
+          <div className="hidden sm:flex items-center space-x-1 text-xs font-semibold">
+            {(['en', 'hi', 'gu'] as const).map((l) => {
+              const targetPath = pathname ? pathname.replace(/^\/(en|hi|gu)/, `/${l}`) : `/${l}`;
+              const isActive = locale === l;
+              return (
+                <Link
+                  key={l}
+                  href={targetPath}
+                  className={`px-2 py-1 rounded transition-colors ${
+                    isActive
+                      ? 'bg-emerald-100 text-emerald-800 font-bold dark:bg-emerald-950/80 dark:text-emerald-300'
+                      : 'text-muted-foreground hover:text-emerald-600 hover:bg-gray-100 dark:hover:bg-zinc-800'
+                  }`}
+                >
+                  {l.toUpperCase()}
+                </Link>
+              );
+            })}
           </div>
           
           <Button 

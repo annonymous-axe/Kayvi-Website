@@ -112,55 +112,55 @@
       "content": ""
     },
     "team": {
-      "title": "",
+      "title": "हमारी टीम से मिलें",
       "members": {
         "m1": {
-          "name": "",
-          "role": ""
+          "name": "विजय पाटिल",
+          "role": "सीईओ और संस्थापक"
         },
         "m2": {
-          "name": "",
-          "role": ""
+          "name": "दीपक पाटिल",
+          "role": "इंजीनियरिंग प्रमुख"
         },
         "m3": {
-          "name": "",
-          "role": ""
+          "name": "कमलेश बाविस्कर",
+          "role": "ऑपरेशन इंजीनियरिंग"
         }
       }
     }
   },
   "ServicesPage": {
     "hero": {
-      "title": "",
-      "subtitle": ""
+      "title": "हमारी सेवाएं",
+      "subtitle": "आपकी ऊर्जा आवश्यकताओं के लिए अनुकूलित संपूर्ण सौर समाधान।"
     },
-    "cta": ""
+    "cta": "और जानें"
   },
   "ContactPage": {
     "hero": {
-      "title": "",
-      "subtitle": ""
+      "title": "संपर्क करें",
+      "subtitle": "मुफ्त परामर्श या किसी भी प्रश्न के लिए संपर्क करें।"
     },
     "form": {
-      "title": "",
-      "name": "",
-      "namePlaceholder": "",
-      "email": "",
-      "emailPlaceholder": "",
-      "phone": "",
-      "phonePlaceholder": "",
-      "projectType": "",
-      "projectPlaceholder": "",
-      "message": "",
-      "messagePlaceholder": "",
-      "submit": "",
-      "success": ""
+      "title": "हमें संदेश भेजें",
+      "name": "पूरा नाम",
+      "namePlaceholder": "उदा. रमेश पटेल",
+      "email": "ईमेल पता",
+      "emailPlaceholder": "yourname@example.com",
+      "phone": "फ़ोन नंबर",
+      "phonePlaceholder": "+91 82004 98266",
+      "projectType": "प्रोजेक्ट का प्रकार",
+      "projectPlaceholder": "प्रोजेक्ट प्रकार चुनें",
+      "message": "संदेश",
+      "messagePlaceholder": "अपनी ऊर्जा आवश्यकताओं के बारे में बताएं...",
+      "submit": "संदेश भेजें",
+      "success": "संदेश सफलतापूर्वक भेजा गया!"
     },
     "info": {
-      "title": "",
-      "address": "",
-      "phone": "",
-      "email": ""
+      "title": "संपर्क जानकारी",
+      "address": "दुकान नं. 12, आर. डी. कॉम्प्लेक्स, नवागाम, डिंडोली रोड, उधना, सूरत, गुजरात 394210",
+      "phone": "+91 8200498266",
+      "email": "kayvisolar@gmail.com"
     }
   },
   "CalculatorPage": {

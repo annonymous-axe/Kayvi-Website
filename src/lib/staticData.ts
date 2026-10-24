@@ -1,0 +1,328 @@
+export interface Testimonial {
+  documentId: string;
+  clientName: string;
+  projectType: string;
+  quote: string;
+}
+
+export interface Project {
+  documentId: string;
+  title: string;
+  description: string;
+  status?: string;
+  coverImage?: {
+    url: string;
+  };
+}
+
+export interface Faq {
+  documentId: string;
+  question: string;
+  answer: string;
+}
+
+export interface Career {
+  documentId: string;
+  title: string;
+  location: string;
+  employmentType: string;
+  description: string;
+}
+
+export interface Certificate {
+  documentId: string;
+  title: string;
+  issuedBy: string;
+  issuedDate: string;
+  image?: {
+    url: string;
+  };
+}
+
+export interface BlogPost {
+  documentId: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  publishedAt: string;
+  coverImage?: {
+    url: string;
+  };
+}
+
+export const staticTestimonials: Testimonial[] = [
+  {
+    documentId: 't-1',
+    clientName: 'Harishbhai Patel',
+    projectType: 'Residential 5kW Rooftop Solar',
+    quote: 'Kayvi Solar made the entire transition to solar seamless. Our monthly electricity bill dropped from ₹7,500 to almost zero, and the PM Surya Ghar subsidy was processed without hassle.'
+  },
+  {
+    documentId: 't-2',
+    clientName: 'Amit Shah',
+    projectType: 'Commercial 100kW Industrial Plant',
+    quote: 'The return on investment has exceeded our forecasts. The engineering team at Kayvi Solar executed the 100kW installation on time with outstanding build quality.'
+  },
+  {
+    documentId: 't-3',
+    clientName: 'Meenaben Joshi',
+    projectType: 'Solar Water Heater 500 LPD',
+    quote: 'We installed the solar water heater system for our apartment society. It has been running flawlessly for over two years with zero maintenance issues.'
+  }
+];
+
+export const staticProjects: Project[] = [
+  {
+    documentId: 'p-1',
+    title: '150 kW Industrial Rooftop Plant',
+    description: 'High-efficiency bifacial monocrystalline solar installation at Vatva GIDC, reducing annual carbon emissions by 180 tonnes.',
+    status: 'Upcoming',
+    coverImage: {
+      url: '/images/commercial_solar.jpg'
+    }
+  },
+  {
+    documentId: 'p-2',
+    title: '10 kW Residential Grid-Tied System',
+    description: 'Premium rooftop system in Gandhinagar featuring tier-1 micro-inverters and smart app energy monitoring.',
+    status: 'Upcoming',
+    coverImage: {
+      url: '/images/residential_solar.jpg'
+    }
+  },
+  {
+    documentId: 'p-3',
+    title: '1000 LPD Commercial Water Heater',
+    description: 'Pressurized evacuated tube collector (ETC) solar water heating system engineered for a healthcare facility in Ahmedabad.',
+    status: 'Upcoming',
+    coverImage: {
+      url: '/images/solar_water_heater.jpg'
+    }
+  },
+  {
+    documentId: 'p-4',
+    title: '50 kW Commercial Warehouse System',
+    description: 'Custom tilt-mounted solar array for an export logistics warehouse in Sanand, optimizing peak daylight capture.',
+    status: 'Upcoming',
+    coverImage: {
+      url: '/images/commercial_solar.jpg'
+    }
+  },
+  {
+    documentId: 'p-5',
+    title: '6 kW Residential Solar Rooftop',
+    description: 'Aesthetically integrated home rooftop solar solution in Surat with zero shadow interruption and net metering approval.',
+    status: 'Upcoming',
+    coverImage: {
+      url: '/images/residential_solar.jpg'
+    }
+  },
+  {
+    documentId: 'p-6',
+    title: 'Industrial Process Solar Heating',
+    description: 'Advanced solar thermal system providing hot water for pre-heating industrial textile boilers.',
+    status: 'Upcoming',
+    coverImage: {
+      url: '/images/solar_water_heater.jpg'
+    }
+  }
+];
+
+export const staticFaqs: Faq[] = [
+  {
+    documentId: 'f-1',
+    question: 'How much can I save by installing rooftop solar with Kayvi Solar?',
+    answer: 'Most residential customers save 80% to 95% on their monthly electricity bills. Commercial and industrial establishments typically achieve full return on investment (ROI) within 3 to 4 years.'
+  },
+  {
+    documentId: 'f-2',
+    question: 'How does the PM Surya Ghar: Muft Bijli Yojana subsidy work?',
+    answer: 'Under the PM Surya Ghar scheme, eligible households receive up to ₹78,000 direct subsidy for systems up to 3kW. Kayvi Solar handles the complete registration, DISCOM approval, and subsidy disbursement assistance.'
+  },
+  {
+    documentId: 'f-3',
+    question: 'What is Net Metering and how do I benefit from it?',
+    answer: 'Net metering uses a bi-directional electricity meter that records power consumed from the grid and solar energy exported to the grid. Excess units generated are banked or credited against future bills.'
+  },
+  {
+    documentId: 'f-4',
+    question: 'What warranty is provided on solar panels and inverters?',
+    answer: 'We provide a 25-year performance warranty on solar panels and a 5 to 10-year manufacturer warranty on inverters, along with dedicated post-installation maintenance and system monitoring.'
+  },
+  {
+    documentId: 'f-5',
+    question: 'How long does the installation process take?',
+    answer: 'Residential installations are typically completed within 3 to 5 business days once DISCOM approvals are in place. Commercial installations take between 2 to 4 weeks depending on system scale.'
+  }
+];
+
+export const staticCareers: Career[] = [
+  {
+    documentId: 'c-1',
+    title: 'Solar PV Design Engineer',
+    location: 'Ahmedabad, Gujarat',
+    employmentType: 'Full-time',
+    description: 'Responsible for AutoCAD 2D/3D solar layout design, PVsyst energy yield simulation, single-line diagrams (SLD), and structural assessment.'
+  },
+  {
+    documentId: 'c-2',
+    title: 'Site Execution & Quality Supervisor',
+    location: 'Gandhinagar / Surat, Gujarat',
+    employmentType: 'Full-time',
+    description: 'Oversee on-site civil and electrical installation of residential and commercial rooftop solar projects, ensuring safety and BIS standards.'
+  },
+  {
+    documentId: 'c-3',
+    title: 'Technical Sales Specialist',
+    location: 'Vadodara / Rajkot, Gujarat',
+    employmentType: 'Full-time',
+    description: 'Engage with residential and industrial clients, conduct preliminary site visits, calculate solar potential and present ROI proposals.'
+  }
+];
+
+export const staticCertificates: Certificate[] = [
+  {
+    documentId: 'cert-1',
+    title: 'MNRE Channel Partner & System Integrator',
+    issuedBy: 'Ministry of New and Renewable Energy (Govt. of India)',
+    issuedDate: 'Valid through 2028',
+    image: {
+      url: '/images/hero_bg.jpg'
+    }
+  },
+  {
+    documentId: 'cert-2',
+    title: 'ISO 9001:2015 Quality Management Certification',
+    issuedBy: 'International Organization for Standardization',
+    issuedDate: 'Certified 2024',
+    image: {
+      url: '/images/commercial_solar.jpg'
+    }
+  },
+  {
+    documentId: 'cert-3',
+    title: 'GEDA Registered Solar Rooftop Vendor',
+    issuedBy: 'Gujarat Energy Development Agency',
+    issuedDate: 'Active Empathized Vendor',
+    image: {
+      url: '/images/residential_solar.jpg'
+    }
+  },
+  {
+    documentId: 'cert-4',
+    title: 'BIS Certified Solar Module Compliance',
+    issuedBy: 'Bureau of Indian Standards',
+    issuedDate: 'Certified Standards IS 14286 / IEC 61215',
+    image: {
+      url: '/images/solar_water_heater.jpg'
+    }
+  }
+];
+
+export const staticBlogPosts: BlogPost[] = [
+  {
+    documentId: 'b-1',
+    title: 'Complete Guide to PM Surya Ghar Muft Bijli Yojana Subsidy 2026',
+    slug: 'pm-surya-ghar-subsidy-guide',
+    excerpt: 'Everything you need to know about claiming up to ₹78,000 subsidy on residential rooftop solar under the government initiative.',
+    publishedAt: '2026-03-15',
+    coverImage: {
+      url: '/images/residential_solar.jpg'
+    },
+    content: `
+# Complete Guide to PM Surya Ghar: Muft Bijli Yojana Subsidy
+
+The PM Surya Ghar: Muft Bijli Yojana is one of the most ambitious renewable energy initiatives launched in India, aimed at providing free or near-zero electricity to 1 crore households.
+
+## Subsidy Structure Overview
+Under the revised framework:
+- **1 kW System**: ₹30,000 central financial assistance (CFA).
+- **2 kW System**: ₹60,000 central financial assistance.
+- **3 kW & Above**: ₹78,000 flat central financial assistance.
+
+## Key Eligibility Criteria
+1. The applicant must own a residential property with clear rooftop rights.
+2. Valid electricity consumer number with the local DISCOM (e.g., UGVCL, DGVCL, MGVCL, PGVCL, Torrent Power).
+3. The solar modules used must be compliant with the ALMM (Approved List of Models and Manufacturers).
+
+## How Kayvi Solar Assists You
+From feasibility assessment and application submission on the national portal to DISCOM inspection and net meter synchronization, Kayvi Solar delivers end-to-end turnkey support.
+    `
+  },
+  {
+    documentId: 'b-2',
+    title: 'Commercial & Industrial Solar ROI: Slashing Operational Power Costs by 80%',
+    slug: 'commercial-solar-roi-explained',
+    excerpt: 'How commercial enterprises and factories in Gujarat are leveraging accelerated depreciation and high solar yields to achieve payback in under 3 years.',
+    publishedAt: '2026-02-28',
+    coverImage: {
+      url: '/images/commercial_solar.jpg'
+    },
+    content: `
+# Commercial & Industrial Solar ROI: Slashing Operational Power Costs
+
+With commercial grid electricity tariffs hovering between ₹7.50 to ₹9.50 per unit in many industrial clusters, electricity is one of the largest ongoing operational expenses for factories and commercial properties.
+
+## Financial Advantages of Commercial Solar
+1. **Accelerated Depreciation**: Businesses can claim 40% accelerated depreciation under Section 32 of the Income Tax Act in the first year alone.
+2. **Predictable Energy Pricing**: Solar provides 25+ years of fixed-cost energy, hedging against rising utility grid tariffs.
+3. **Short Payback Window**: An optimally designed rooftop solar system pays for itself within 32 to 42 months.
+
+## Environmental and ESG Credentials
+Transitioning to clean energy enhances ESG ratings, satisfies export client sustainability compliance, and substantially curtails Scope 2 greenhouse gas emissions.
+    `
+  },
+  {
+    documentId: 'b-3',
+    title: 'Top 7 Financial & Environmental Benefits of Installing Rooftop Solar',
+    slug: 'top-benefits-of-solar-energy',
+    excerpt: 'Discover why switching to solar is one of the safest high-yield investments for homeowners today.',
+    publishedAt: '2026-01-20',
+    coverImage: {
+      url: '/images/hero_bg.jpg'
+    },
+    content: `
+# Top 7 Financial & Environmental Benefits of Installing Rooftop Solar
+
+Solar energy is no longer just an eco-conscious alternative—it is a financially rewarding decision that delivers guaranteed annual returns exceeding traditional fixed deposits.
+
+## 1. Drastic Reduction in Electricity Bills
+By producing your own clean power, you drastically cut down grid energy imports and shield your household from recurring tariff hikes.
+
+## 2. High Return on Investment (ROI)
+A typical residential rooftop system generates internal rates of return (IRR) between 25% to 35% per annum.
+
+## 3. Increase in Property Value
+Homes equipped with modern solar installations command higher market value and attract quality buyers seeking energy-efficient residences.
+
+## 4. Minimal Maintenance Requirements
+Solar PV systems feature no moving parts. Routine periodic washing with water is all that is required to sustain peak generation.
+
+## 5. 25-Year Long-Term Reliability
+Premium tier-1 solar panels are engineered to endure extreme weather, heavy winds, and high UV radiation for over two and a half decades.
+    `
+  },
+  {
+    documentId: 'b-4',
+    title: 'Solar Water Heaters vs Electric Geysers: Comparison and Savings Guide',
+    slug: 'how-to-choose-solar-water-heater',
+    excerpt: 'Analyze energy consumption, installation costs, and long-term savings between solar thermal systems and traditional electric heaters.',
+    publishedAt: '2026-01-10',
+    coverImage: {
+      url: '/images/solar_water_heater.jpg'
+    },
+    content: `
+# Solar Water Heaters vs Electric Geysers: Comparison and Savings Guide
+
+Water heating accounts for roughly 20% to 30% of a typical household's winter electricity bill. Choosing the right water heating technology can save thousands of rupees every year.
+
+## Evacuated Tube Collectors (ETC) vs Flat Plate Collectors (FPC)
+- **ETC Systems**: Highly economical, optimal for areas with soft to medium water hardness, and efficient in colder weather.
+- **FPC Systems**: Extremely durable copper tubes and metallic construction, recommended for pressurized and rugged applications.
+
+## Payback Period
+A 200 LPD solar water heating system typically saves around 1,500 to 2,000 units of electricity annually, paying for itself in approximately 2 years.
+    `
+  }
+];

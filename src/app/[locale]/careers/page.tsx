@@ -1,7 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import CareersClient from '@/components/careers/CareersClient';
-import { fetchGraphQL } from '@/lib/graphql';
-import { GET_CAREERS } from '@/lib/queries';
+import { staticCareers } from '@/lib/staticData';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const resolvedParams = await params;
@@ -13,13 +12,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default async function CareersPage() {
-  let careers = [];
-  try {
-    const data = await fetchGraphQL<{ careerListings: any[] }>(GET_CAREERS);
-    careers = data?.careerListings || [];
-  } catch (error) {
-    console.error("Failed to fetch careers");
-  }
-
-  return <CareersClient careers={careers} />;
+  return <CareersClient careers={staticCareers} />;
 }
+

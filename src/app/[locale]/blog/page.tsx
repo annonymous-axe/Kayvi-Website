@@ -1,7 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import BlogListClient from '@/components/blog/BlogListClient';
-import { fetchGraphQL } from '@/lib/graphql';
-import { GET_BLOG_POSTS } from '@/lib/queries';
+import { staticBlogPosts } from '@/lib/staticData';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const resolvedParams = await params;
@@ -13,13 +12,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default async function BlogPage() {
-  let posts = [];
-  try {
-    const data = await fetchGraphQL<{ blogPosts: any[] }>(GET_BLOG_POSTS);
-    posts = data?.blogPosts || [];
-  } catch (error) {
-    console.error("Failed to fetch blog posts from CMS");
-  }
-
-  return <BlogListClient posts={posts} />;
+  return <BlogListClient posts={staticBlogPosts} />;
 }
+

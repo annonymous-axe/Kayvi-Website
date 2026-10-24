@@ -11,6 +11,7 @@ interface Project {
   documentId: string;
   title: string;
   description: string;
+  status?: string;
   coverImage?: {
     url: string;
   };
@@ -108,6 +109,10 @@ export default function ServicesClient({ projects = [] }: { projects?: Project[]
               {projects.map((project, i) => (
                 <motion.div key={project.documentId} className="group rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-zinc-800" {...fadeIn} transition={{ delay: i * 0.1 }}>
                   <div className="relative h-60 overflow-hidden bg-gray-100 dark:bg-zinc-800">
+                    <div className="absolute top-4 right-4 z-10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider rounded-full bg-amber-500 text-white shadow-md flex items-center gap-1.5 backdrop-blur-sm">
+                      <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                      {project.status || 'Upcoming'}
+                    </div>
                     {project.coverImage ? (
                       <Image 
                         src={project.coverImage.url.startsWith('http') ? project.coverImage.url : `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${project.coverImage.url}`} 

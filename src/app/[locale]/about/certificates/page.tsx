@@ -1,7 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import CertificatesClient from '@/components/about/CertificatesClient';
-import { fetchGraphQL } from '@/lib/graphql';
-import { GET_CERTIFICATES } from '@/lib/queries';
+import { staticCertificates } from '@/lib/staticData';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const resolvedParams = await params;
@@ -13,13 +12,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default async function CertificatesPage() {
-  let certificates = [];
-  try {
-    const data = await fetchGraphQL<{ certificates: any[] }>(GET_CERTIFICATES);
-    certificates = data?.certificates || [];
-  } catch (error) {
-    console.error("Failed to fetch certificates");
-  }
-
-  return <CertificatesClient certificates={certificates} />;
+  return <CertificatesClient certificates={staticCertificates} />;
 }
+

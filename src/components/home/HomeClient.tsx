@@ -1,8 +1,8 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import { Sun, Leaf, Shield } from 'lucide-react';
 import Image from 'next/image';
 import { SITE_IMAGES, SITE_STATS } from '@/config/constants';
@@ -16,6 +16,7 @@ interface Testimonial {
 
 export default function HomeClient({ testimonials = [] }: { testimonials?: Testimonial[] }) {
   const t = useTranslations('HomePage');
+  const locale = useLocale();
 
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -52,12 +53,18 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
             {t('hero.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-8">
-            <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white text-lg px-8 py-6 rounded-full shadow-xl hover:shadow-2xl transition-all">
+            <Link
+              href={`/${locale}/contact`}
+              className="inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white text-lg font-bold px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95"
+            >
               {t('hero.ctaPrimary')}
-            </Button>
-            <Button variant="outline" size="lg" className="bg-transparent text-white border-white hover:bg-white/20 hover:text-white text-lg px-8 py-6 rounded-full backdrop-blur-sm transition-all">
+            </Link>
+            <Link
+              href={`/${locale}/services`}
+              className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white border-2 border-white/80 text-lg font-bold px-8 py-4 rounded-full backdrop-blur-md shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95"
+            >
               {t('hero.ctaSecondary')}
-            </Button>
+            </Link>
           </div>
         </motion.div>
       </section>
@@ -107,38 +114,44 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div className="group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer" {...fadeIn} transition={{ delay: 0.1 }}>
-              <div className="relative h-64 overflow-hidden">
-                <Image src={SITE_IMAGES.services.residential} alt="Residential Solar" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                <h3 className="absolute bottom-6 left-6 text-2xl font-bold text-white">{t('services.residential.title')}</h3>
-              </div>
-              <div className="p-6 bg-white dark:bg-zinc-800">
-                <p className="text-muted-foreground">{t('services.residential.description')}</p>
-              </div>
-            </motion.div>
+            <Link href={`/${locale}/services/residential-solar`} className="block">
+              <motion.div className="group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer h-full flex flex-col" {...fadeIn} transition={{ delay: 0.1 }}>
+                <div className="relative h-64 overflow-hidden">
+                  <Image src={SITE_IMAGES.services.residential} alt="Residential Solar" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                  <h3 className="absolute bottom-6 left-6 text-2xl font-bold text-white group-hover:text-emerald-300 transition-colors">{t('services.residential.title')}</h3>
+                </div>
+                <div className="p-6 bg-white dark:bg-zinc-800 flex-grow">
+                  <p className="text-muted-foreground">{t('services.residential.description')}</p>
+                </div>
+              </motion.div>
+            </Link>
 
-            <motion.div className="group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer" {...fadeIn} transition={{ delay: 0.2 }}>
-              <div className="relative h-64 overflow-hidden">
-                <Image src={SITE_IMAGES.services.commercial} alt="Commercial Solar" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                <h3 className="absolute bottom-6 left-6 text-2xl font-bold text-white">{t('services.commercial.title')}</h3>
-              </div>
-              <div className="p-6 bg-white dark:bg-zinc-800">
-                <p className="text-muted-foreground">{t('services.commercial.description')}</p>
-              </div>
-            </motion.div>
+            <Link href={`/${locale}/services/commercial-solar`} className="block">
+              <motion.div className="group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer h-full flex flex-col" {...fadeIn} transition={{ delay: 0.2 }}>
+                <div className="relative h-64 overflow-hidden">
+                  <Image src={SITE_IMAGES.services.commercial} alt="Commercial Solar" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                  <h3 className="absolute bottom-6 left-6 text-2xl font-bold text-white group-hover:text-emerald-300 transition-colors">{t('services.commercial.title')}</h3>
+                </div>
+                <div className="p-6 bg-white dark:bg-zinc-800 flex-grow">
+                  <p className="text-muted-foreground">{t('services.commercial.description')}</p>
+                </div>
+              </motion.div>
+            </Link>
 
-            <motion.div className="group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer" {...fadeIn} transition={{ delay: 0.3 }}>
-              <div className="relative h-64 overflow-hidden">
-                <Image src={SITE_IMAGES.services.waterHeater} alt="Solar Water Heaters" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                <h3 className="absolute bottom-6 left-6 text-2xl font-bold text-white">{t('services.waterHeater.title')}</h3>
-              </div>
-              <div className="p-6 bg-white dark:bg-zinc-800">
-                <p className="text-muted-foreground">{t('services.waterHeater.description')}</p>
-              </div>
-            </motion.div>
+            <Link href={`/${locale}/services/solar-water-heater`} className="block">
+              <motion.div className="group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer h-full flex flex-col" {...fadeIn} transition={{ delay: 0.3 }}>
+                <div className="relative h-64 overflow-hidden">
+                  <Image src={SITE_IMAGES.services.waterHeater} alt="Solar Water Heaters" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                  <h3 className="absolute bottom-6 left-6 text-2xl font-bold text-white group-hover:text-emerald-300 transition-colors">{t('services.waterHeater.title')}</h3>
+                </div>
+                <div className="p-6 bg-white dark:bg-zinc-800 flex-grow">
+                  <p className="text-muted-foreground">{t('services.waterHeater.description')}</p>
+                </div>
+              </motion.div>
+            </Link>
           </div>
         </div>
       </section>
@@ -195,9 +208,12 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
             <p className="text-xl text-muted-foreground mb-10">
               {t('cta.subtitle')}
             </p>
-            <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white text-xl px-12 py-8 rounded-full shadow-xl hover:shadow-2xl transition-all">
+            <Link
+              href={`/${locale}/contact`}
+              className="inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white text-xl font-bold px-12 py-5 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95"
+            >
               {t('cta.button')}
-            </Button>
+            </Link>
           </motion.div>
         </div>
       </section>

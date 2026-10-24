@@ -11,8 +11,8 @@ export const SITE_IMAGES = {
 };
 
 export const SITE_STATS = [
-  { id: 'experience', value: 10, suffix: '+', translationKey: 'stats.experience' },
-  { id: 'installations', value: 500, suffix: '+', translationKey: 'stats.installations' },
-  { id: 'mwGenerated', value: 20, suffix: 'MW+', translationKey: 'stats.mwGenerated' },
-  { id: 'support', value: 24, suffix: '/7', translationKey: 'stats.support' },
+  { id: 'warranty', value: 25, suffix: 'Yr', translationKey: 'stats.warranty' },
+  { id: 'savings', value: 80, suffix: '%+', translationKey: 'stats.savings' },
+  { id: 'subsidy', value: 100, suffix: '%', translationKey: 'stats.subsidy' },
+  { id: 'survey', value: 48, suffix: 'h', translationKey: 'stats.survey' },
 ];

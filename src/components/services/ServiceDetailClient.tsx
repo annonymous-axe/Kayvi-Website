@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export default function ServiceDetailClient({
@@ -36,23 +35,43 @@ export default function ServiceDetailClient({
         <motion.div className="relative z-10 text-center space-y-6 max-w-3xl px-4" {...fadeIn}>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white">{title}</h1>
           <p className="text-xl text-gray-200">{subtitle}</p>
-          <Button 
-            size="lg" 
-            className="mt-8 bg-emerald-600 hover:bg-emerald-700 text-white"
-            render={<Link href={`/${locale}/contact`} />}
-            nativeButton={false}
+          <Link 
+            href={`/${locale}/contact`}
+            className="inline-flex items-center justify-center mt-8 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-lg px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95"
           >
             {ctaText}
-          </Button>
+          </Link>
         </motion.div>
       </section>
 
       <section className="py-24 px-4 bg-gray-50 dark:bg-zinc-900">
-         <div className="container mx-auto max-w-4xl text-center">
-            <h2 className="text-3xl font-bold mb-6">Service details coming soon.</h2>
-            <p className="text-muted-foreground text-lg">
-              This page will be dynamically populated with detailed content from the Strapi CMS in Phase 6.
-            </p>
+         <div className="container mx-auto max-w-4xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              <div className="bg-white dark:bg-zinc-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-700 text-center">
+                <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-950/60 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-600 font-bold text-lg">25</div>
+                <h3 className="font-bold text-lg mb-2">25-Yr Warranty</h3>
+                <p className="text-muted-foreground text-sm">Tier-1 solar equipment with long-term guaranteed performance.</p>
+              </div>
+              <div className="bg-white dark:bg-zinc-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-700 text-center">
+                <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-950/60 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-600 font-bold text-lg">₹</div>
+                <h3 className="font-bold text-lg mb-2">Subsidy & Net Metering</h3>
+                <p className="text-muted-foreground text-sm">Complete PM Surya Ghar application and DISCOM liaison.</p>
+              </div>
+              <div className="bg-white dark:bg-zinc-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-700 text-center">
+                <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-950/60 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-600 font-bold text-lg">48h</div>
+                <h3 className="font-bold text-lg mb-2">Quick Site Survey</h3>
+                <p className="text-muted-foreground text-sm">Free rooftop layout assessment and customized payback estimate.</p>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <Link 
+                href={`/${locale}/contact`}
+                className="inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all"
+              >
+                Schedule Free Site Visit
+              </Link>
+            </div>
          </div>
       </section>
     </div>

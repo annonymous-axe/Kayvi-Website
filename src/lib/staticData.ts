@@ -79,7 +79,7 @@ export const staticProjects: Project[] = [
     description: 'High-efficiency bifacial monocrystalline solar installation at Vatva GIDC, reducing annual carbon emissions by 180 tonnes.',
     status: 'Upcoming',
     coverImage: {
-      url: '/images/commercial_solar.jpg'
+      url: '/images/projects/p1_industrial.webp'
     }
   },
   {
@@ -88,7 +88,7 @@ export const staticProjects: Project[] = [
     description: 'Premium rooftop system in Gandhinagar featuring tier-1 micro-inverters and smart app energy monitoring.',
     status: 'Upcoming',
     coverImage: {
-      url: '/images/residential_solar.jpg'
+      url: '/images/projects/p2_residential.webp'
     }
   },
   {
@@ -97,7 +97,7 @@ export const staticProjects: Project[] = [
     description: 'Pressurized evacuated tube collector (ETC) solar water heating system engineered for a healthcare facility in Ahmedabad.',
     status: 'Upcoming',
     coverImage: {
-      url: '/images/solar_water_heater.jpg'
+      url: '/images/projects/p3_water_heater.webp'
     }
   },
   {
@@ -106,7 +106,7 @@ export const staticProjects: Project[] = [
     description: 'Custom tilt-mounted solar array for an export logistics warehouse in Sanand, optimizing peak daylight capture.',
     status: 'Upcoming',
     coverImage: {
-      url: '/images/commercial_solar.jpg'
+      url: '/images/projects/p4_commercial.webp'
     }
   },
   {
@@ -115,7 +115,7 @@ export const staticProjects: Project[] = [
     description: 'Aesthetically integrated home rooftop solar solution in Surat with zero shadow interruption and net metering approval.',
     status: 'Upcoming',
     coverImage: {
-      url: '/images/residential_solar.jpg'
+      url: '/images/projects/p5_urban_rooftop.webp'
     }
   },
   {
@@ -124,7 +124,7 @@ export const staticProjects: Project[] = [
     description: 'Advanced solar thermal system providing hot water for pre-heating industrial textile boilers.',
     status: 'Upcoming',
     coverImage: {
-      url: '/images/solar_water_heater.jpg'
+      url: '/images/projects/p6_solar_thermal.webp'
     }
   }
 ];

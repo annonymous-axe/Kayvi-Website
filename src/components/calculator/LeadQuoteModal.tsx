@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { submitLead } from '@/lib/leads';
+import Logo from '@/components/common/Logo';
 
 interface LeadQuoteModalProps {
   isOpen: boolean;
@@ -133,12 +134,15 @@ export default function LeadQuoteModal({
 
             {!isSubmitted ? (
               <div>
-                {/* Header Badge & Title */}
+                {/* Header Badge, Logo & Title */}
                 <div className="mb-6 text-center sm:text-left">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200/50 mb-3">
-                    <Zap className="w-3.5 h-3.5 text-emerald-600" />
-                    {t('badge')}
-                  </span>
+                  <div className="flex items-center justify-between gap-3 mb-3">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200/50">
+                      <Zap className="w-3.5 h-3.5 text-emerald-600" />
+                      {t('badge')}
+                    </span>
+                    <Logo height={34} />
+                  </div>
                   <h3 className="text-xl sm:text-2xl font-extrabold text-foreground tracking-tight">
                     {t('title')}
                   </h3>

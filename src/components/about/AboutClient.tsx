@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
+import Logo from '@/components/common/Logo';
 
 export default function AboutClient() {
   const t = useTranslations('AboutPage');
@@ -19,8 +20,13 @@ export default function AboutClient() {
   return (
     <div className="flex flex-col min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="bg-emerald-600 text-white py-24 px-4 text-center">
+      <section className="bg-emerald-600 text-white py-20 px-4 text-center">
         <motion.div className="max-w-3xl mx-auto" {...fadeIn}>
+          <div className="flex justify-center mb-6">
+            <div className="bg-white/95 dark:bg-zinc-900/90 backdrop-blur-md px-6 py-3 rounded-2xl shadow-xl inline-flex items-center">
+              <Logo height={56} />
+            </div>
+          </div>
           <h1 className="text-4xl md:text-6xl font-extrabold mb-6">{t('hero.title')}</h1>
           <p className="text-xl text-emerald-100">{t('hero.subtitle')}</p>
         </motion.div>

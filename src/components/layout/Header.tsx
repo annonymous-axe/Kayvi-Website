@@ -11,6 +11,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { siteConfig } from '@/config/site';
+import Logo from '@/components/common/Logo';
 
 export default function Header({ locale }: { locale: string }) {
   const t = useTranslations('Navigation');
@@ -39,10 +40,8 @@ export default function Header({ locale }: { locale: string }) {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm">
       <div className="container mx-auto px-4 flex h-16 items-center justify-between">
         <div className="flex items-center gap-6 md:gap-10">
-          <Link href={`/${locale}`} className="flex items-center space-x-2">
-            <span className="font-extrabold text-xl md:text-2xl text-emerald-600 tracking-tight">
-              {siteConfig.businessName}
-            </span>
+          <Link href={`/${locale}`} className="flex items-center">
+            <Logo height={46} priority />
           </Link>
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
             {navLinks.map((link) => (
@@ -101,7 +100,10 @@ export default function Header({ locale }: { locale: string }) {
               <span className="sr-only">Toggle Menu</span>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <nav className="flex flex-col gap-6 mt-8">
+              <div className="pb-4 mt-2 border-b">
+                <Logo height={40} />
+              </div>
+              <nav className="flex flex-col gap-6 mt-6">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}

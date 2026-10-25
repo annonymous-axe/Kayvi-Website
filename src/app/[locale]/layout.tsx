@@ -13,6 +13,22 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata = {
   title: siteConfig.businessName,
   description: siteConfig.tagline,
+  icons: {
+    icon: '/favicon.ico',
+    apple: siteConfig.logo.mark,
+  },
+  openGraph: {
+    title: siteConfig.businessName,
+    description: siteConfig.tagline,
+    images: [
+      {
+        url: siteConfig.logo.src,
+        width: siteConfig.logo.width,
+        height: siteConfig.logo.height,
+        alt: siteConfig.logo.alt,
+      },
+    ],
+  },
 };
 
 export function generateStaticParams() {

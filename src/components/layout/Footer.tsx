@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { siteConfig } from '@/config/site';
+import Logo from '@/components/common/Logo';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
 export default function Footer({ locale }: { locale: string }) {
@@ -17,10 +18,8 @@ export default function Footer({ locale }: { locale: string }) {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
           {/* Brand & Tagline */}
           <div className="space-y-4">
-            <Link href={`/${locale}`} className="flex items-center space-x-2">
-              <span className="font-extrabold text-2xl text-emerald-500 tracking-tight">
-                {siteConfig.businessName}
-              </span>
+            <Link href={`/${locale}`} className="inline-block">
+              <Logo variant="dark" height={52} />
             </Link>
             <p className="text-zinc-400 text-sm">
               {t('tagline')}

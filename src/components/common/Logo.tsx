@@ -10,7 +10,7 @@ export interface LogoProps {
    */
   variant?: 'light' | 'dark' | 'mark';
   /**
-   * Rendered height of the logo in pixels. Default is 46px.
+   * Rendered height of the logo in pixels. Default is 48px.
    */
   height?: number;
   /**
@@ -30,12 +30,12 @@ export interface LogoProps {
 /**
  * Centralized Logo component for Kayvi Solar.
  * Reads directly from `siteConfig.logo`.
- * Changing the logo in siteConfig or replacing the image files automatically
- * updates the logo across all pages, Header, Footer, and modals.
+ * Changing the logo in siteConfig or replacing the image files in `public/images/`
+ * automatically updates the logo across all pages, Header, Footer, and modals.
  */
 export default function Logo({
   variant = 'light',
-  height = 46,
+  height = 48,
   priority = false,
   className = '',
   imgClassName = '',
@@ -46,10 +46,13 @@ export default function Logo({
   const src = isMark
     ? siteConfig.logo.mark
     : isDark
-      ? siteConfig.logo.srcDark
+      ? (siteConfig.logo.srcDark || siteConfig.logo.src)
       : siteConfig.logo.src;
 
-  const aspectRatio = isMark ? 667 / 373 : siteConfig.logo.width / siteConfig.logo.height;
+  const aspectRatio = isMark
+    ? (siteConfig.logo.markWidth || 674) / (siteConfig.logo.markHeight || 374)
+    : siteConfig.logo.width / siteConfig.logo.height;
+
   const width = Math.round(height * aspectRatio);
 
   return (

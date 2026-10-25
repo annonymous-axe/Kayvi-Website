@@ -193,6 +193,24 @@
       "chartWithout": "Without Solar",
       "chartWith": "With Solar",
       "cta": "Get Formal Quote"
+    },
+    "modal": {
+      "badge": "PM Surya Ghar Subsidy Eligible",
+      "title": "Get Formal Quote & Subsidy Breakdown",
+      "subtitle": "Enter your details to receive an official proposal, roof feasibility check, and subsidy assistance.",
+      "nameLabel": "Full Name",
+      "namePlaceholder": "e.g. Ramesh Patel",
+      "phoneLabel": "Mobile / WhatsApp Number",
+      "phonePlaceholder": "98765 43210",
+      "cityLabel": "City / Area",
+      "cityPlaceholder": "e.g. Surat, Gujarat",
+      "submit": "Get Free Quote & Subsidy Plan",
+      "submitting": "Submitting details...",
+      "privacy": "100% Free consultation. No spam. Direct DISCOM net-metering support.",
+      "successTitle": "Quote Request Received!",
+      "successMessage": "Thank you! Our solar engineer will review your system size and call you shortly with your formal quotation.",
+      "whatsappButton": "Chat with Engineer on WhatsApp",
+      "closeButton": "Close"
     }
   },
   "BlogPage": {

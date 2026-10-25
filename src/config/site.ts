@@ -5,6 +5,7 @@ export const siteConfig = {
   email: process.env.NEXT_PUBLIC_EMAIL || "kayvisolar@gmail.com",
   address: process.env.NEXT_PUBLIC_ADDRESS || "Shop No. 12, R. D. Complex, Navagam, Dindoli Rd, Udhana, Surat, Gujarat 394210",
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+918200498266",
+  leadWebhookUrl: process.env.NEXT_PUBLIC_LEAD_WEBHOOK_URL || "https://api.kayvisolar.com/api/v1/leads",
   socialLinks: {
     facebook: process.env.NEXT_PUBLIC_FACEBOOK_URL || "https://facebook.com",
     instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://instagram.com",

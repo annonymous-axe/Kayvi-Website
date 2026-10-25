@@ -9,8 +9,9 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { Sun, TrendingUp, Sparkles, Clock } from 'lucide-react';
+import { Sun, TrendingUp, Sparkles, Clock, FileText } from 'lucide-react';
 import Link from 'next/link';
+import LeadQuoteModal from '@/components/calculator/LeadQuoteModal';
 
 export default function CalculatorClient({ locale }: { locale: string }) {
   const t = useTranslations('CalculatorPage');
@@ -20,6 +21,7 @@ export default function CalculatorClient({ locale }: { locale: string }) {
   const [exposure, setExposure] = useState('high');
   const [roofType, setRoofType] = useState('sloped');
   const [isMounted, setIsMounted] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -160,11 +162,12 @@ export default function CalculatorClient({ locale }: { locale: string }) {
 
             {/* CTA Button */}
             <Button 
+              type="button"
               size="lg" 
-              className="w-full h-12 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all"
-              render={<Link href={`/${locale}/contact`} />}
-              nativeButton={false}
+              onClick={() => setIsModalOpen(true)}
+              className="w-full h-12 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
+              <FileText className="w-4 h-4" />
               {t('results.cta')}
             </Button>
 
@@ -303,6 +306,20 @@ export default function CalculatorClient({ locale }: { locale: string }) {
 
         </div>
       </section>
+
+      {/* Lead Generation Modal */}
+      <LeadQuoteModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        monthlyBill={Array.isArray(bill) ? bill[0] : bill}
+        systemSize={`${results.systemSize} kW`}
+        monthlySavings={results.monthlySavings}
+        twentyYearSavings={results.twentyYearSavings}
+        payback={`${results.payback} ${t('results.years')}`}
+        roofType={roofType}
+        exposure={exposure}
+        locale={locale}
+      />
     </div>
   );
 }

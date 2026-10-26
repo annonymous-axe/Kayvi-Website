@@ -22,6 +22,13 @@ export const siteConfig = {
   address: process.env.NEXT_PUBLIC_ADDRESS || "Shop No. 12, R. D. Complex, Navagam, Dindoli Rd, Udhana, Surat, Gujarat 394210",
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+918200498266",
   leadWebhookUrl: process.env.NEXT_PUBLIC_LEAD_WEBHOOK_URL || "https://api.kayvisolar.com/api/v1/leads",
+  googleReviews: {
+    placeId: process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID || "",
+    apiUrl: process.env.NEXT_PUBLIC_GOOGLE_REVIEWS_API_URL || "https://api.kayvisolar.com/api/v1/reviews",
+    reviewUrl: process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL || "https://maps.google.com/?q=Kayvi+Solar+Shop+No+12+RD+Complex+Navagam+Dindoli+Rd+Surat+Gujarat",
+    rating: 4.9,
+    totalReviews: 28,
+  },
   socialLinks: {
     facebook: process.env.NEXT_PUBLIC_FACEBOOK_URL || "https://facebook.com",
     instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://instagram.com",

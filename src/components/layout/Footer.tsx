@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { siteConfig } from '@/config/site';
 import Logo from '@/components/common/Logo';
+import { GoogleGIcon } from '@/components/reviews/GoogleReviews';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
 export default function Footer({ locale }: { locale: string }) {
@@ -24,6 +25,20 @@ export default function Footer({ locale }: { locale: string }) {
             <p className="text-zinc-400 text-sm">
               {t('tagline')}
             </p>
+            {/* Google Rating Trust Badge */}
+            <a
+              href={siteConfig.googleReviews.reviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-emerald-500/50 transition-colors text-xs text-zinc-300 w-fit"
+            >
+              <GoogleGIcon className="w-4 h-4" />
+              <div className="flex items-center gap-1 text-amber-400">
+                <span className="font-bold text-white text-xs">{siteConfig.googleReviews.rating}</span>
+                <span>★★★★★</span>
+              </div>
+              <span className="text-[11px] text-zinc-400 font-medium">({siteConfig.googleReviews.totalReviews}+ Reviews)</span>
+            </a>
             <div className="space-y-2 text-xs text-zinc-400 pt-2">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />

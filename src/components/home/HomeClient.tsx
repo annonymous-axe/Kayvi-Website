@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Sun, Leaf, Shield } from 'lucide-react';
 import Image from 'next/image';
 import { SITE_IMAGES, SITE_STATS } from '@/config/constants';
+import GoogleReviews from '@/components/reviews/GoogleReviews';
 
 interface Testimonial {
   documentId: string;
@@ -174,31 +175,8 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      {testimonials && testimonials.length > 0 && (
-        <section className="py-24 bg-gray-50 dark:bg-zinc-900">
-          <div className="container mx-auto px-4">
-            <motion.div className="text-center mb-16" {...fadeIn}>
-              <h2 className="text-3xl md:text-4xl font-bold">{t('testimonials.title')}</h2>
-              <div className="w-24 h-1 bg-emerald-500 mx-auto mt-6 rounded-full" />
-            </motion.div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, i) => (
-                <motion.div key={testimonial.documentId} className="bg-white dark:bg-zinc-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-700 flex flex-col" {...fadeIn} transition={{ delay: i * 0.1 }}>
-                  <div className="mb-6 flex-grow">
-                    <p className="text-lg italic text-muted-foreground">"{testimonial.quote}"</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg">{testimonial.clientName}</h4>
-                    <p className="text-muted-foreground">{testimonial.projectType}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      {/* Google Reviews Showcase */}
+      <GoogleReviews locale={locale} />
 
       {/* CTA Section */}
       <section className="py-24">

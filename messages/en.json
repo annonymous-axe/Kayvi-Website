@@ -45,24 +45,17 @@
       "survey": "Free Site Survey & Quote"
     },
     "testimonials": {
-      "title": "What Our Clients Say",
-      "items": {
-        "t1": {
-          "name": "Sarah Johnson",
-          "role": "Homeowner",
-          "quote": "Kayvi Solar transformed our energy bill. The installation was seamless and the team was incredibly professional."
-        },
-        "t2": {
-          "name": "Michael Chen",
-          "role": "Business Owner",
-          "quote": "Switching our warehouse to solar was the best financial decision we made this year. Highly recommend."
-        },
-        "t3": {
-          "name": "Emily Rodriguez",
-          "role": "Homeowner",
-          "quote": "I love the new solar water heater. It works perfectly and the savings are noticeable every single month."
-        }
-      }
+      "title": "Google Customer Reviews",
+      "subtitle": "Real, verified feedback from property owners across Surat & Gujarat who switched to solar with Kayvi Solar."
+    },
+    "googleReviews": {
+      "title": "Google Customer Reviews",
+      "subtitle": "Real, verified feedback from property owners across Surat & Gujarat who switched to solar with Kayvi Solar.",
+      "writeReview": "Write a Review on Google",
+      "basedOn": "Based on 28+ Google Reviews in Surat",
+      "viewAll": "Read all customer reviews on Google Maps",
+      "newBadge": "New",
+      "verifiedCustomer": "Verified Google Customer"
     },
     "cta": {
       "title": "Ready to Make the Switch?",

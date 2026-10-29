@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, CheckCircle2, MapPin, ExternalLink, ThumbsUp, Plus, Sparkles, MessageSquare, RefreshCw, X } from 'lucide-react';
+import { Star, CheckCircle2, MapPin, ExternalLink, ThumbsUp, MessageSquare } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { GoogleReview, pastGoogleReviews, mergeAndSortReviews, formatReviewRelativeTime, fetchLiveGoogleReviews } from '@/lib/reviews';
 
@@ -45,25 +45,18 @@ export default function GoogleReviews({
   const [activeFilter, setActiveFilter] = useState<'all' | '5star' | 'residential' | 'commercial'>('all');
   const [sortBy, setSortBy] = useState<'newest' | 'highest'>('newest');
   const [isLoadingLive, setIsLoadingLive] = useState(false);
-  const [isWriteModalOpen, setIsWriteModalOpen] = useState(false);
 
-  // New review form state for instant preview
-  const [newAuthor, setNewAuthor] = useState('');
-  const [newText, setNewText] = useState('');
-  const [newService, setNewService] = useState('Residential 5kW Rooftop Solar');
-  const [newLocation, setNewLocation] = useState('Surat, Gujarat');
-  const [newRating, setNewRating] = useState(5);
-
-  // Fetch live reviews on mount from configured endpoint
+  // Fetch live Google reviews on mount from configured endpoint or Google Places API
   useEffect(() => {
     let isMounted = true;
 
     async function loadLive() {
-      if (!siteConfig.googleReviews.apiUrl) return;
+      if (!siteConfig.googleReviews.apiUrl && !siteConfig.googleReviews.placeId) return;
       setIsLoadingLive(true);
       try {
         const live = await fetchLiveGoogleReviews();
         if (isMounted && live && live.length > 0) {
+          // Merge with past reviews and sort newest to oldest
           setReviews(mergeAndSortReviews(pastGoogleReviews, live));
         }
       } catch (e) {
@@ -75,71 +68,10 @@ export default function GoogleReviews({
 
     loadLive();
 
-    // Check localStorage for any demo reviews added locally
-    try {
-      const stored = localStorage.getItem('kayvi_local_google_reviews');
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          setReviews((prev) => mergeAndSortReviews(prev, parsed));
-        }
-      }
-    } catch (e) {}
-
     return () => {
       isMounted = false;
     };
   }, []);
-
-  // Handle adding a new review (instant placement at 1st place / newest)
-  const handleAddNewReview = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newAuthor.trim() || !newText.trim()) return;
-
-    const initials = newAuthor
-      .trim()
-      .split(/\s+/)
-      .map((w) => w[0]?.toUpperCase())
-      .slice(0, 2)
-      .join('') || 'GR';
-
-    const now = new Date();
-    const newRev: GoogleReview = {
-      id: `live-review-${Date.now()}`,
-      authorName: newAuthor.trim(),
-      authorInitials: initials,
-      avatarBgColor: '#059669',
-      rating: newRating,
-      isoDate: now.toISOString(),
-      timestamp: now.getTime(),
-      text: newText.trim(),
-      serviceType: newService,
-      location: newLocation,
-      isVerifiedGoogleReview: true,
-      helpfulCount: 1,
-      ownerResponse: {
-        authorName: 'Kayvi Solar (Owner)',
-        text: `Thank you ${newAuthor.trim()} for your wonderful 5-star review! We are honored to be your trusted solar partner.`,
-        isoDate: new Date(now.getTime() + 1000 * 60 * 5).toISOString(),
-      },
-    };
-
-    // Prepend to list - sorted newest first
-    const updated = mergeAndSortReviews(reviews, [newRev]);
-    setReviews(updated);
-
-    // Save locally
-    try {
-      const stored = localStorage.getItem('kayvi_local_google_reviews');
-      const existing = stored ? JSON.parse(stored) : [];
-      localStorage.setItem('kayvi_local_google_reviews', JSON.stringify([newRev, ...existing]));
-    } catch (e) {}
-
-    // Reset and close
-    setNewAuthor('');
-    setNewText('');
-    setIsWriteModalOpen(false);
-  };
 
   // Filter reviews
   const filteredReviews = reviews.filter((r) => {
@@ -149,7 +81,7 @@ export default function GoogleReviews({
     return true;
   });
 
-  // Sort reviews
+  // Sort reviews: Newest First (default, timestamp descending) or Highest Rated
   const sortedReviews = [...filteredReviews].sort((a, b) => {
     if (sortBy === 'highest') {
       return b.rating - a.rating || (b.timestamp || 0) - (a.timestamp || 0);
@@ -171,7 +103,7 @@ export default function GoogleReviews({
             <span className="text-xs md:text-sm font-bold text-gray-800 dark:text-zinc-200 uppercase tracking-wider">
               Google Customer Reviews
             </span>
-            <span className="flex h-2 w-2 relative">
+            <span className="flex h-2 w-2 relative" title="Live Google Reviews Sync">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
@@ -195,9 +127,9 @@ export default function GoogleReviews({
             {/* Big Rating Number */}
             <div className="md:col-span-4 text-center md:text-left md:border-r border-gray-100 dark:border-zinc-700 md:pr-6">
               <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
-                <GoogleGIcon className="w-8 h-8" />
+                <GoogleGIcon className="w-9 h-9" />
                 <span className="text-4xl md:text-5xl font-black text-foreground tracking-tight">
-                  {siteConfig.googleReviews.rating}
+                  {siteConfig.googleReviews.rating.toFixed(1)}
                 </span>
                 <span className="text-lg text-muted-foreground font-semibold">/ 5.0</span>
               </div>
@@ -207,47 +139,41 @@ export default function GoogleReviews({
                 ))}
               </div>
               <p className="text-xs md:text-sm font-medium text-muted-foreground">
-                Based on <strong className="text-foreground">{siteConfig.googleReviews.totalReviews}+ Google Reviews</strong> in Surat
+                Based on <strong className="text-foreground">{siteConfig.googleReviews.totalReviews} Google reviews</strong> in Surat
               </p>
             </div>
 
             {/* Rating Breakdown / Trust Pillars */}
-            <div className="md:col-span-5 space-y-2 px-2 md:px-4 text-xs md:text-sm">
+            <div className="md:col-span-4 space-y-2.5 px-2 md:px-4 text-xs md:text-sm">
               <div className="flex items-center gap-2 text-foreground font-semibold">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span>100% Genuine PM Surya Ghar Subsidy Assistance</span>
+                <span>100% Genuine PM Surya Ghar Subsidy</span>
               </div>
               <div className="flex items-center gap-2 text-foreground font-semibold">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span>Tier-1 Bifacial Solar Panels & DGVCL Net Metering</span>
+                <span>DGVCL Net Metering & Tier-1 Panels</span>
               </div>
               <div className="flex items-center gap-2 text-foreground font-semibold">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span>Lifetime After-Sales & Generation Monitoring</span>
+                <span>Lifetime Support & Generation Guarantee</span>
               </div>
             </div>
 
             {/* Write a Review Action */}
-            <div className="md:col-span-3 flex flex-col gap-2.5 justify-center">
+            <div className="md:col-span-4 flex flex-col gap-2 justify-center">
               <a
                 href={siteConfig.googleReviews.reviewUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 text-sm"
+                className="w-full inline-flex items-center justify-center gap-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-5 rounded-2xl shadow-md hover:shadow-lg transition-all duration-200 text-sm hover:scale-[1.02]"
               >
-                <GoogleGIcon className="w-4 h-4" />
-                <span>{locale === 'hi' ? 'गूगल पर रिव्यू लिखें' : locale === 'gu' ? 'ગુગલ પર રિવ્યૂ લખો' : 'Write a Review'}</span>
-                <ExternalLink className="w-3.5 h-3.5" />
+                <GoogleGIcon className="w-5 h-5" />
+                <span>{locale === 'hi' ? 'गूगल पर रिव्यू लिखें' : locale === 'gu' ? 'ગુગલ પર રિવ્યૂ લખો' : 'Write a Review on Google'}</span>
+                <ExternalLink className="w-4 h-4" />
               </a>
-
-              <button
-                type="button"
-                onClick={() => setIsWriteModalOpen(true)}
-                className="w-full inline-flex items-center justify-center gap-1.5 bg-gray-100 hover:bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-foreground font-medium py-2 px-3 rounded-xl transition-colors text-xs"
-              >
-                <Plus className="w-3.5 h-3.5" />
-                <span>Share Review On Website</span>
-              </button>
+              <p className="text-[11px] text-center text-muted-foreground">
+                Reviews are posted directly on Google and sync automatically here.
+              </p>
             </div>
           </div>
         </div>
@@ -309,7 +235,6 @@ export default function GoogleReviews({
           <AnimatePresence>
             {sortedReviews.map((review, index) => {
               const isFirst = index === 0;
-              const isRecent = Date.now() - (review.timestamp || 0) < 1000 * 60 * 60 * 24 * 30; // within 30 days
 
               return (
                 <motion.div
@@ -362,11 +287,6 @@ export default function GoogleReviews({
                       </div>
 
                       <div className="flex items-center gap-1.5 shrink-0">
-                        {isRecent && (
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
-                            New
-                          </span>
-                        )}
                         <GoogleGIcon className="w-4 h-4" />
                       </div>
                     </div>
@@ -421,7 +341,7 @@ export default function GoogleReviews({
           </AnimatePresence>
         </div>
 
-        {/* View on Google Maps Banner */}
+        {/* View on Google Search / Google Maps Banner */}
         <div className="mt-14 text-center">
           <a
             href={siteConfig.googleReviews.reviewUrl}
@@ -430,132 +350,11 @@ export default function GoogleReviews({
             className="inline-flex items-center gap-2 text-sm font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
           >
             <GoogleGIcon className="w-4 h-4" />
-            <span>Read all 28+ customer reviews directly on Google Maps</span>
+            <span>Read all 3 customer reviews directly on Google</span>
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
         </div>
       </div>
-
-      {/* Interactive Add Review Modal for Instant Website Visibility */}
-      <AnimatePresence>
-        {isWriteModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              className="bg-white dark:bg-zinc-900 rounded-3xl p-6 md:p-8 max-w-lg w-full border border-gray-200 dark:border-zinc-700 shadow-2xl relative"
-            >
-              <button
-                type="button"
-                onClick={() => setIsWriteModalOpen(false)}
-                className="absolute top-5 right-5 p-1 rounded-full text-muted-foreground hover:text-foreground hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              <div className="flex items-center gap-2 mb-2">
-                <GoogleGIcon className="w-6 h-6" />
-                <h3 className="text-xl font-bold text-foreground">Share Your Solar Experience</h3>
-              </div>
-              <p className="text-xs text-muted-foreground mb-5">
-                Drop your review below. It will immediately appear at the very first place on our website!
-              </p>
-
-              <form onSubmit={handleAddNewReview} className="space-y-4">
-                <div>
-                  <label className="block text-xs font-semibold text-foreground mb-1.5">Rating</label>
-                  <div className="flex items-center gap-2">
-                    {[1, 2, 3, 4, 5].map((s) => (
-                      <button
-                        key={s}
-                        type="button"
-                        onClick={() => setNewRating(s)}
-                        className="p-1 focus:outline-none"
-                      >
-                        <Star
-                          className={`w-6 h-6 ${
-                            s <= newRating ? 'fill-amber-400 text-amber-400' : 'text-gray-300 dark:text-zinc-600'
-                          }`}
-                        />
-                      </button>
-                    ))}
-                    <span className="text-sm font-bold text-amber-500 ml-2">{newRating}.0 Stars</span>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-foreground mb-1">Your Full Name</label>
-                  <input
-                    type="text"
-                    required
-                    value={newAuthor}
-                    onChange={(e) => setNewAuthor(e.target.value)}
-                    placeholder="e.g. Mukeshbhai Patel"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-sm text-foreground focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-xs font-semibold text-foreground mb-1">System Installed</label>
-                    <select
-                      value={newService}
-                      onChange={(e) => setNewService(e.target.value)}
-                      className="w-full px-3 py-2.5 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-xs text-foreground focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                    >
-                      <option>Residential 3kW Rooftop Solar</option>
-                      <option>Residential 5kW Rooftop Solar</option>
-                      <option>Residential 10kW Rooftop Solar</option>
-                      <option>Commercial 25kW Solar Plant</option>
-                      <option>Commercial 50kW Industrial Plant</option>
-                      <option>Solar Water Heater 500 LPD</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold text-foreground mb-1">Location</label>
-                    <input
-                      type="text"
-                      value={newLocation}
-                      onChange={(e) => setNewLocation(e.target.value)}
-                      placeholder="e.g. Dindoli, Surat"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-xs text-foreground focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-foreground mb-1">Your Review</label>
-                  <textarea
-                    required
-                    rows={4}
-                    value={newText}
-                    onChange={(e) => setNewText(e.target.value)}
-                    placeholder="Tell others about your solar generation, electricity bill reduction, subsidy process, or installation experience..."
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-sm text-foreground focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                  />
-                </div>
-
-                <div className="flex gap-3 pt-2">
-                  <button
-                    type="button"
-                    onClick={() => setIsWriteModalOpen(false)}
-                    className="flex-1 py-3 px-4 rounded-xl font-semibold border border-gray-200 dark:border-zinc-700 text-muted-foreground hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors text-sm"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="flex-1 py-3 px-4 rounded-xl font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-all text-sm"
-                  >
-                    Post Review
-                  </button>
-                </div>
-              </form>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

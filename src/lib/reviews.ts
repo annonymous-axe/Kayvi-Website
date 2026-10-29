@@ -77,53 +77,6 @@ export const pastGoogleReviews: GoogleReview[] = [
     isVerifiedGoogleReview: true,
     helpfulCount: 6,
     text: 'Installed a 500 LPD commercial-grade ETC pressurized solar water heating system for our residential apartment building in Adajan. Hot water is available 24/7 even during cloudy mornings. The team at Kayvi Solar is courteous, responsive, and prompt with annual maintenance.',
-  },
-  {
-    id: 'gr-04',
-    authorName: 'Rajeshbhai Vaghani',
-    authorInitials: 'RV',
-    avatarBgColor: '#7C3AED', // Purple
-    rating: 5,
-    isoDate: '2026-09-12T08:30:00Z',
-    timestamp: new Date('2026-09-12T08:30:00Z').getTime(),
-    serviceType: 'Residential 3kW Solar Rooftop',
-    location: 'Navagam, Surat',
-    isVerifiedGoogleReview: true,
-    helpfulCount: 8,
-    text: 'Best solar installation company in Surat. Their office is right in R. D. Complex near Navagam, so you can meet the founders directly. Transparent quotation without any hidden charges. They handled all GEB/DGVCL net-meter documentation. Very satisfied with our 3kW system performance.',
-    ownerResponse: {
-      authorName: 'Kayvi Solar (Owner)',
-      text: 'Thank you Rajeshbhai! Being locally accessible right here in Navagam & Udhana allows us to serve our Surat community with pride and prompt on-site support.',
-      isoDate: '2026-09-12T14:10:00Z'
-    }
-  },
-  {
-    id: 'gr-05',
-    authorName: 'Pravinbhai Baviskar',
-    authorInitials: 'PB',
-    avatarBgColor: '#DC2626', // Red
-    rating: 5,
-    isoDate: '2026-08-22T14:10:00Z',
-    timestamp: new Date('2026-08-22T14:10:00Z').getTime(),
-    serviceType: 'Residential 10kW Solar Rooftop',
-    location: 'Udhana, Surat',
-    isVerifiedGoogleReview: true,
-    helpfulCount: 11,
-    text: 'Superb experience with Kayvi Solar. Elevated GI heavy-duty structure was fabricated cleanly so our roof area remains 100% usable as a terrace gazebo. Generation output is higher than promised in the generation report. Great team of engineers!',
-  },
-  {
-    id: 'gr-06',
-    authorName: 'Jignesh Desai',
-    authorInitials: 'JD',
-    avatarBgColor: '#0891B2', // Cyan
-    rating: 5,
-    isoDate: '2026-07-15T09:05:00Z',
-    timestamp: new Date('2026-07-15T09:05:00Z').getTime(),
-    serviceType: 'Commercial 25kW Rooftop System',
-    location: 'Katargam, Surat',
-    isVerifiedGoogleReview: true,
-    helpfulCount: 5,
-    text: 'Transferred our commercial clinic building to solar power with Kayvi Solar. The mobile app monitoring lets us track daily solar generation and savings on our phone in real time. Prompt service and highly professional team.',
   }
 ];
 

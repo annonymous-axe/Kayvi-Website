@@ -34,10 +34,10 @@ export default function Footer({ locale }: { locale: string }) {
             >
               <GoogleGIcon className="w-4 h-4" />
               <div className="flex items-center gap-1 text-amber-400">
-                <span className="font-bold text-white text-xs">{siteConfig.googleReviews.rating}</span>
+                <span className="font-bold text-white text-xs">{siteConfig.googleReviews.rating.toFixed(1)}</span>
                 <span>★★★★★</span>
               </div>
-              <span className="text-[11px] text-zinc-400 font-medium">({siteConfig.googleReviews.totalReviews}+ Reviews)</span>
+              <span className="text-[11px] text-zinc-400 font-medium">({siteConfig.googleReviews.totalReviews} Reviews)</span>
             </a>
             <div className="space-y-2 text-xs text-zinc-400 pt-2">
               <div className="flex items-start gap-2">

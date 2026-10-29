@@ -24,10 +24,11 @@ export const siteConfig = {
   leadWebhookUrl: process.env.NEXT_PUBLIC_LEAD_WEBHOOK_URL || "https://api.kayvisolar.com/api/v1/leads",
   googleReviews: {
     placeId: process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID || "",
-    apiUrl: process.env.NEXT_PUBLIC_GOOGLE_REVIEWS_API_URL || "https://api.kayvisolar.com/api/v1/reviews",
-    reviewUrl: process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL || "https://maps.google.com/?q=Kayvi+Solar+Shop+No+12+RD+Complex+Navagam+Dindoli+Rd+Surat+Gujarat",
-    rating: 4.9,
-    totalReviews: 28,
+    apiUrl: process.env.NEXT_PUBLIC_GOOGLE_REVIEWS_API_URL || "",
+    // Direct Google Maps review link (opens Google Search Knowledge Panel / Google review dialog)
+    reviewUrl: process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL || "https://www.google.com/search?q=kayvi+solar",
+    rating: 5.0,
+    totalReviews: 3,
   },
   socialLinks: {
     facebook: process.env.NEXT_PUBLIC_FACEBOOK_URL || "https://facebook.com",

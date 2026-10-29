@@ -51,26 +51,7 @@ export interface BlogPost {
   };
 }
 
-export const staticTestimonials: Testimonial[] = [
-  {
-    documentId: 't-1',
-    clientName: 'Harishbhai Patel',
-    projectType: 'Residential 5kW Rooftop Solar',
-    quote: 'Kayvi Solar made the entire transition to solar seamless. Our monthly electricity bill dropped from ₹7,500 to almost zero, and the PM Surya Ghar subsidy was processed without hassle.'
-  },
-  {
-    documentId: 't-2',
-    clientName: 'Amit Shah',
-    projectType: 'Commercial 100kW Industrial Plant',
-    quote: 'The return on investment has exceeded our forecasts. The engineering team at Kayvi Solar executed the 100kW installation on time with outstanding build quality.'
-  },
-  {
-    documentId: 't-3',
-    clientName: 'Meenaben Joshi',
-    projectType: 'Solar Water Heater 500 LPD',
-    quote: 'We installed the solar water heater system for our apartment society. It has been running flawlessly for over two years with zero maintenance issues.'
-  }
-];
+export const staticTestimonials: Testimonial[] = [];
 
 export const staticProjects: Project[] = [
   {

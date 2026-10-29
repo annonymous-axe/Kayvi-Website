@@ -22,91 +22,58 @@ export interface GoogleReview {
 }
 
 /**
- * Verified past Google Reviews for Kayvi Solar.
- * Pre-sorted from newest to oldest.
+ * Real past Google Reviews cache.
+ * Initialized to empty array: NO fake or placeholder reviews are ever hardcoded.
+ * All reviews are dynamically fetched from the live Google Reviews endpoint.
  */
-export const pastGoogleReviews: GoogleReview[] = [
-  {
-    id: 'gr-01',
-    authorName: 'Harishbhai Patel',
-    authorInitials: 'HP',
-    avatarBgColor: '#059669', // Emerald
-    rating: 5,
-    isoDate: '2026-10-20T10:15:00Z',
-    timestamp: new Date('2026-10-20T10:15:00Z').getTime(),
-    serviceType: 'Residential 5kW Rooftop Solar',
-    location: 'Dindoli, Surat',
-    isVerifiedGoogleReview: true,
-    helpfulCount: 9,
-    text: 'Kayvi Solar made our solar journey completely effortless! Vijaybhai and Kamlesh personally inspected our terrace in Dindoli and designed a 5kW monocrystalline bifacial system. Our bi-monthly electricity bill went from ₹14,800 to just ₹240 minimum meter charge. Plus, the PM Surya Ghar Muft Bijli Yojana ₹78,000 subsidy was credited directly to my bank within 30 days! Highly recommended for honest pricing and genuine tier-1 components.',
-    ownerResponse: {
-      authorName: 'Kayvi Solar (Owner)',
-      text: 'Thank you Harishbhai for your valuable trust and wonderful feedback! We are thrilled to see your electricity bills drop to near zero with PM Surya Ghar. Our engineering team is always here for your lifetime maintenance.',
-      isoDate: '2026-10-20T16:00:00Z'
-    }
-  },
-  {
-    id: 'gr-02',
-    authorName: 'Amit Shah',
-    authorInitials: 'AS',
-    avatarBgColor: '#2563EB', // Blue
-    rating: 5,
-    isoDate: '2026-10-14T15:45:00Z',
-    timestamp: new Date('2026-10-14T15:45:00Z').getTime(),
-    serviceType: 'Commercial 100kW Industrial Plant',
-    location: 'Pandesara GIDC, Surat',
-    isVerifiedGoogleReview: true,
-    helpfulCount: 14,
-    text: 'We engaged Kayvi Solar for our 100kW industrial rooftop installation at our textile unit in Pandesara. Dipak Patil and their engineering crew completed the high-tension net metering liaisoning, DGVCL approvals, and structural installation in record time without stopping our production. Payback period is under 3.2 years. Outstanding technical expertise and clean workmanship.',
-    ownerResponse: {
-      authorName: 'Kayvi Solar (Owner)',
-      text: 'Thank you Amitbhai! Delivering industrial solar installations on time with maximum ROI is our top priority. We look forward to powering your expansion phase as well.',
-      isoDate: '2026-10-15T09:30:00Z'
-    }
-  },
-  {
-    id: 'gr-03',
-    authorName: 'Meenaben Joshi',
-    authorInitials: 'MJ',
-    avatarBgColor: '#D97706', // Amber
-    rating: 5,
-    isoDate: '2026-09-28T11:20:00Z',
-    timestamp: new Date('2026-09-28T11:20:00Z').getTime(),
-    serviceType: 'Solar Water Heater 500 LPD',
-    location: 'Adajan, Surat',
-    isVerifiedGoogleReview: true,
-    helpfulCount: 6,
-    text: 'Installed a 500 LPD commercial-grade ETC pressurized solar water heating system for our residential apartment building in Adajan. Hot water is available 24/7 even during cloudy mornings. The team at Kayvi Solar is courteous, responsive, and prompt with annual maintenance.',
-  }
-];
+export const pastGoogleReviews: GoogleReview[] = [];
 
 /**
- * Merge live reviews with past reviews, deduplicating by ID,
+ * Merge reviews, deduplicate by ID,
  * and sort strictly from newest to oldest (timestamp descending).
- * Any newly posted review will naturally be placed at index 0 (first place).
+ * Any newly posted Google review will naturally appear at index 0 (first place).
  */
 export function mergeAndSortReviews(
-  past: GoogleReview[] = pastGoogleReviews,
-  live: GoogleReview[] = []
+  existing: GoogleReview[] = [],
+  fresh: GoogleReview[] = []
 ): GoogleReview[] {
   const map = new Map<string, GoogleReview>();
 
-  // Add past reviews
-  past.forEach((r) => {
-    map.set(r.id, r);
+  existing.forEach((r) => {
+    if (r && r.id) map.set(r.id, r);
   });
 
-  // Add or update live reviews
-  live.forEach((r) => {
-    map.set(r.id, r);
+  fresh.forEach((r) => {
+    if (r && r.id) map.set(r.id, r);
   });
 
-  // Convert to array and sort newest first (timestamp descending)
   return Array.from(map.values()).sort((a, b) => {
-    const timeA = a.timestamp || new Date(a.isoDate).getTime();
-    const timeB = b.timestamp || new Date(b.isoDate).getTime();
+    const timeA = a.timestamp || (a.isoDate ? new Date(a.isoDate).getTime() : 0);
+    const timeB = b.timestamp || (b.isoDate ? new Date(b.isoDate).getTime() : 0);
     return timeB - timeA;
   });
+}
+
+/**
+ * Helper to generate initials from a name (e.g. "Mukesh Patel" -> "MP").
+ */
+export function getInitials(name: string): string {
+  if (!name) return 'GS';
+  const parts = name.trim().split(/\s+/);
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+/**
+ * Helper to generate consistent avatar background colors based on reviewer name.
+ */
+const AVATAR_COLORS = ['#059669', '#2563EB', '#D97706', '#7C3AED', '#DC2626', '#0891B2', '#4F46E5'];
+export function getAvatarColor(name: string): string {
+  let hash = 0;
+  for (let i = 0; i < (name || '').length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
 }
 
 /**
@@ -114,6 +81,7 @@ export function mergeAndSortReviews(
  * localized for English, Hindi, and Gujarati.
  */
 export function formatReviewRelativeTime(isoDate: string, locale: string = 'en'): string {
+  if (!isoDate) return '';
   const now = Date.now();
   const past = new Date(isoDate).getTime();
   const diffSec = Math.max(0, Math.floor((now - past) / 1000));
@@ -156,25 +124,76 @@ export function formatReviewRelativeTime(isoDate: string, locale: string = 'en')
 }
 
 /**
- * Fetch live reviews from configured endpoint (REST API / Webhook / Google Places proxy).
- * Falls back safely to empty array if endpoint is unreachable or not configured.
+ * Normalizes raw Google Places API review format into standard GoogleReview.
  */
+function normalizeGoogleReview(raw: any, index: number): GoogleReview {
+  const authorName = raw.author_name || raw.authorName || 'Google User';
+  const timestamp = raw.time ? raw.time * 1000 : (raw.timestamp || Date.now() - index * 86400000);
+  const isoDate = raw.isoDate || new Date(timestamp).toISOString();
+
+  return {
+    id: raw.id || `google-${timestamp}-${authorName.replace(/\s+/g, '_')}`,
+    authorName,
+    authorInitials: getInitials(authorName),
+    authorPhotoUrl: raw.profile_photo_url || raw.authorPhotoUrl,
+    avatarBgColor: getAvatarColor(authorName),
+    rating: Number(raw.rating) || 5,
+    isoDate,
+    timestamp,
+    text: raw.text || '',
+    serviceType: raw.serviceType || 'Solar Rooftop Installation',
+    location: raw.location || 'Surat, Gujarat',
+    isVerifiedGoogleReview: true,
+    helpfulCount: raw.helpfulCount || 0,
+    ownerResponse: raw.ownerResponse || (raw.owner_response ? {
+      authorName: raw.owner_response.author_name || 'Kayvi Solar (Owner)',
+      text: raw.owner_response.text || '',
+      isoDate: raw.owner_response.iso_date || new Date().toISOString()
+    } : undefined),
+  };
+}
+
+/**
+ * Fetch live reviews from configured endpoint (REST API / Cloudflare Edge / Google Places proxy).
+ * Checks sessionStorage cache (5 min TTL) to avoid wasteful API quota consumption,
+ * while automatically fetching newly submitted reviews.
+ */
+const CACHE_KEY = 'kayvi_live_google_reviews';
+const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
+
 export async function fetchLiveGoogleReviews(): Promise<GoogleReview[]> {
   const apiUrl = siteConfig.googleReviews.apiUrl;
   const placeId = siteConfig.googleReviews.placeId;
 
-  if (!apiUrl && !placeId) {
-    return [];
+  // 1. Check in-memory / sessionStorage cache first
+  if (typeof window !== 'undefined') {
+    try {
+      const cached = sessionStorage.getItem(CACHE_KEY);
+      if (cached) {
+        const { data, savedAt } = JSON.parse(cached);
+        if (Date.now() - savedAt < CACHE_TTL_MS && Array.isArray(data) && data.length > 0) {
+          return data;
+        }
+      }
+    } catch {
+      // Ignore sessionStorage errors
+    }
+  }
+
+  // 2. Build target URL
+  let targetUrl = apiUrl || '/api/reviews';
+  if (typeof window !== 'undefined' && targetUrl.startsWith('/')) {
+    targetUrl = `${window.location.origin}${targetUrl}`;
   }
 
   try {
-    const url = new URL(apiUrl || 'https://api.kayvisolar.com/api/v1/reviews');
+    const url = new URL(targetUrl);
     if (placeId) {
       url.searchParams.set('placeId', placeId);
     }
 
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 3500);
+    const timeoutId = setTimeout(() => controller.abort(), 4000);
 
     const res = await fetch(url.toString(), {
       method: 'GET',
@@ -190,16 +209,36 @@ export async function fetchLiveGoogleReviews(): Promise<GoogleReview[]> {
       return [];
     }
 
-    const data = await res.json();
-    if (Array.isArray(data)) {
-      return data;
+    const json = await res.json();
+    let rawList: any[] = [];
+
+    // Support multiple standard response envelopes
+    if (Array.isArray(json)) {
+      rawList = json;
+    } else if (json && Array.isArray(json.reviews)) {
+      rawList = json.reviews;
+    } else if (json && json.result && Array.isArray(json.result.reviews)) {
+      rawList = json.result.reviews;
     }
-    if (data && Array.isArray(data.reviews)) {
-      return data.reviews;
+
+    const normalized = rawList.map((item, idx) => normalizeGoogleReview(item, idx));
+    const sorted = mergeAndSortReviews([], normalized);
+
+    // Cache to sessionStorage if valid
+    if (typeof window !== 'undefined' && sorted.length > 0) {
+      try {
+        sessionStorage.setItem(CACHE_KEY, JSON.stringify({
+          data: sorted,
+          savedAt: Date.now()
+        }));
+      } catch {
+        // Ignore cache storage errors
+      }
     }
-    return [];
+
+    return sorted;
   } catch (err) {
-    // Graceful fallback for static build or offline environment
+    // Graceful fallback: return empty array rather than fake data
     return [];
   }
 }

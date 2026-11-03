@@ -72,6 +72,7 @@ export default function Footer({ locale }: { locale: string }) {
               <li><Link href={`/${locale}/about`} className="hover:text-emerald-500 transition-colors">{navT('about')}</Link></li>
               <li><Link href={`/${locale}/calculator`} className="hover:text-emerald-500 transition-colors">{navT('calculator')}</Link></li>
               <li><Link href={`/${locale}/gallery`} className="hover:text-emerald-500 transition-colors">{navT('gallery')}</Link></li>
+              <li><Link href={`/${locale}/faq`} className="hover:text-emerald-500 transition-colors">{navT('faq')}</Link></li>
               <li><Link href={`/${locale}/contact`} className="hover:text-emerald-500 transition-colors">{navT('contact')}</Link></li>
             </ul>
           </div>

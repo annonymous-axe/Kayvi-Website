@@ -7,6 +7,7 @@ import { Sun, Leaf, Shield } from 'lucide-react';
 import Image from 'next/image';
 import { SITE_IMAGES, SITE_STATS } from '@/config/constants';
 import GoogleReviews from '@/components/reviews/GoogleReviews';
+import FaqSection from '@/components/faq/FaqSection';
 
 interface Testimonial {
   documentId: string;
@@ -177,6 +178,9 @@ export default function HomeClient({ testimonials = [] }: { testimonials?: Testi
 
       {/* Google Reviews Showcase */}
       <GoogleReviews locale={locale} />
+
+      {/* Frequently Asked Questions (2-Column Accordion Layout) */}
+      <FaqSection locale={locale} />
 
       {/* CTA Section */}
       <section className="py-24">

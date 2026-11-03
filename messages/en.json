@@ -61,6 +61,22 @@
       "title": "Ready to Make the Switch?",
       "subtitle": "Use our interactive solar calculator to estimate your savings and take the first step towards clean energy.",
       "button": "Calculate Savings"
+    },
+    "faq": {
+      "badge": "All your questions, answered.",
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything you need to know about switching to rooftop solar, PM Surya Ghar subsidy, terrace requirements, and savings in Surat & Gujarat.",
+      "stillHaveQuestions": "Still have questions about going solar?",
+      "contactPrompt": "Our solar engineering team in Surat is here to inspect your terrace, calculate your savings, and manage all government subsidies.",
+      "talkToExpert": "Talk to an Expert",
+      "callUs": "Call +91 82004 98266",
+      "viewAllFaqs": "View All Questions",
+      "categories": {
+        "all": "All Questions",
+        "savings": "Savings & Subsidies",
+        "installation": "Terrace & Installation",
+        "technology": "Quality & Warranties"
+      }
     }
   },
   "Navigation": {
@@ -72,7 +88,8 @@
     "contact": "Contact Us",
     "residential": "Residential Solar",
     "commercial": "Commercial Solar",
-    "waterHeater": "Solar Water Heater"
+    "waterHeater": "Solar Water Heater",
+    "faq": "FAQs"
   },
   "Layout": {
     "header": {
@@ -211,8 +228,20 @@
     "subtitle": "Read the latest updates and insights from Kayvi Solar."
   },
   "FaqPage": {
+    "badge": "All your questions, answered.",
     "title": "Frequently Asked Questions",
-    "subtitle": "Everything you need to know about switching to solar energy."
+    "subtitle": "Everything you need to know about switching to rooftop solar, PM Surya Ghar subsidy, terrace requirements, and savings in Surat & Gujarat.",
+    "stillHaveQuestions": "Still have questions about going solar?",
+    "contactPrompt": "Our solar engineering team in Surat is here to inspect your terrace, calculate your savings, and manage all government subsidies.",
+    "talkToExpert": "Talk to an Expert",
+    "callUs": "Call +91 82004 98266",
+    "viewAllFaqs": "View All Questions",
+    "categories": {
+      "all": "All Questions",
+      "savings": "Savings & Subsidies",
+      "installation": "Terrace & Installation",
+      "technology": "Quality & Warranties"
+    }
   },
   "GalleryPage": {
     "title": "Our Gallery",

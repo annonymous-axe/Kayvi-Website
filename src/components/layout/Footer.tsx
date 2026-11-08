@@ -59,9 +59,9 @@ export default function Footer({ locale }: { locale: string }) {
             </div>
             <div className="flex space-x-4 pt-2 text-sm">
               <a href="#" className="hover:text-emerald-500 transition-colors">Facebook</a>
-              <a href="#" className="hover:text-emerald-500 transition-colors">Twitter</a>
-              <a href="#" className="hover:text-emerald-500 transition-colors">Instagram</a>
-              <a href="#" className="hover:text-emerald-500 transition-colors">LinkedIn</a>
+              {/* <a href="#" className="hover:text-emerald-500 transition-colors">Twitter</a> */}
+              <a href="https://www.instagram.com/kayvisolar?psln=MWRicGRrN3Bscjd1MA==" className="hover:text-emerald-500 transition-colors">Instagram</a>
+              {/* <a href="#" className="hover:text-emerald-500 transition-colors">LinkedIn</a> */}
             </div>
           </div>
 
